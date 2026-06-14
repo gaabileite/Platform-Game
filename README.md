@@ -1,56 +1,120 @@
-<h1>Relatório do Projeto - WeGlow</h1>
+# WeGlow: A Ascensão de Virgínia
 
-<h2>Dinâmica geral do jogo</h2>
-<p>Virgínia é uma aspirante a influencer que, para chegar ao topo, precisa da sua ajuda, coletando seguidores, postando stories e soltando lançamentos para sua marca WePink. Mas cuidado! Os haters sempre vão estar lá e os produtos polêmicos podem fazer com que a carreira de Virgínia vá por água abaixo.</p>
+**Disciplina:** Introdução à Programação (IP) - CIn/UFPE  
 
-<h3>Características da personagem</h3>
-<ul>
-  <p>“Aspirante a influencer”: estado inicial da personagem. Começa com 3 vidas.</p>
-  <p>“Minha melhor amiga”: começa com 4 vidas. Alcançada ao fim da primeira fase.</p>
-  <p>“Magnata WePink”: começa com 5 vidas. Alcançada ao fim da segunda fase.</p></ul>
+## 👥 Membros da Equipe
 
-<h3>Inimigos</h3>
-<ul>
-  <p>“Hater”: tradicional monstrinho que tira 1 vida da personagem ao encostar nela. Pode ser derrotado com um pulo.</p>
-  <p>“Felca”: fica parado até a personagem entrar no raio de visão dele e começa a persegui-la até ela sair desse raio de visão. Ao encostar na personagem, rouba 5 seguidores.</p></ul>
+* **Beatriz Luna** — ([beatrizmdluna](https://github.com/beatrizmdluna))
+* **Gabriel Geller** — ([gabrielgellercalou](https://github.com/gabrielgellercallou))
+* **Gabriela Leite** — ([gaabileite](https://github.com/gaabileite))
+* **Leonardo Kitner** — ([leonardokitner](https://github.com/leonardokitner))
+* **Sâmia Freitas** — ([saamiafreitas](https://github.com/saamiafreitas))
+* **Vivian Azevedo** — ([saamiafreitas](https://github.com/vivianazevedo))
 
-<h3>Coletáveis</h3>
-<ul>
-  <p>“Seguidores”: são os coletáveis que mais aparecem ao longo do jogo. Eles são cumulativos e podem ser trocados por power-ups durante o evento “CPI das Bets” (vai ser abordado mais à frente). Frequência de 70%.</p> 
-  <p>“Stories”: quando a personagem coleta 5 stories, o evento “Destaque” acontece, o que concede uma vida extra ao jogador. Frequência de 10%. O contador zera após o evento “Destaque”.</p>
-  <p>“Produtos WePink”: mexem na barra de “Império”. Frequência de 20%.</p>
-  <ul>
-    <p>“Base”: retira 1 ponto da barra. Frequência de 30%.</p>
-    <p>“Body Splash”: adiciona 1 ponto à barra. Frequência de 50%.</p>
-    <p>“Perfume”: adiciona 3 pontos à barra. Frequência de 20%.</p>
-  </ul>
-</ul>
+---
 
-<h3>Fases</h3>
-<ul>
-  <p>“Rezende”: fase inicial. Acaba quando a personagem conquista 200 seguidores.</p>
-  <p>“Zé Felipe”: coletáveis são mais frequentes, mas obstáculos são mais frequentes também. Acaba quando a personagem conquista 450 seguidores.</p>
-  <p>“Vini Jr.”: mais obstáculos ainda, com menos produtos WePink espalhados pela fase. Acaba quando a personagem conquista 700 seguidores (vence o jogo).</p>
-</ul>
+## 🕹️ Sobre o Jogo
 
-<h3>“CPI das Bets”</h3>
-<p>Quando a barra “Império” chega a 10, o evento CPI das Bets acontece. O jogador escolhe entre 5 opções de cartas:</p>
-<ul>
-  <p>“Senador Cleitinho”</p>
-  <p>“Flô Flô Lovers”</p>
-  <p>“We Pinko”</p>
-  <p>“PodCATS”</p>
-  <p>“Lucas Guedes”</p>
-</ul>
-<p>Após essa seleção, o “Tigrinho” randomiza três cartas (sem repetição) - se uma delas for igual à carta escolhida, o jogador ganha um power-up sorteado. Se a carta escolhida não estiver entre as cartas randomizadas, o jogador recebe uma penalização sorteada.Após o evento, a barra “Império” retorna a 0.</p>
+Desenvolvido em Python com a biblioteca Pygame, este é um jogo de plataforma 2D com mecânicas de coleta, combate e apostas, inspirado no universo da influenciadora Virginia Fonseca.
 
-<h3>Power-ups e power-downs</h3>
-<ul>
-  <p><strong>Essência WePink</strong> — boost de velocidade por 5 segundos.</p>
-  <p><strong>Rainha do Samba</strong> — pulo duplo por 7 segundos.</p>
-  <p><strong>Modo Live</strong> c vira um ímã que atrai os seguidores espalhados pela fase por 7 segundos.</p>
-  <p></p>
-  <p><strong>Cancelada</strong> — velocidade reduzida e controles "pesados" por 7 segundos.</p>
-  <p><strong>Boleto da WePink</strong> — perde 3 seguidores por segundo durante 7 segundos.</p>
-  <p><strong>Intimação</strong> — trava a personagem no lugar por 5 segundos.</p>
-</ul>
+---
+
+## 📜 História
+
+Virgínia Fonseca tem um sonho: se tornar a maior magnata da internet. Para isso, ela precisa acumular 1 milhão de seguidores enfrentando rivais, desviando de haters e apostando seus seguidores no famoso Jogo do Tigrinho. O caminho passa por três fases — Rezende, Zé Felipe e Vini Jr — cada uma com seus próprios desafios e recompensas.
+
+---
+
+## 🎯 Objetivo
+
+Controle a Vivíbora e acumule 1 milhão de seguidores para vencer. Colete seguidores, produtos WePink e Stories espalhados pelas fases, derrote Felcas e Haters no caminho e arrisque seus seguidores no Jogo do Tigrinho entre as fases — se tiver coragem.
+
+---
+
+## 🏗️ Arquitetura do Projeto
+
+A estrutura do projeto separa claramente os recursos visuais da lógica do jogo:
+
+```text
+📂 Projeto
+├──resources
+|  ├──fonts
+|  ├──spritesheets
+|  |  ├──player
+|  |  ├──enemy
+|  |  └──collectables
+|  ├──background
+|  └──menu
+├──classes
+|  ├──gameobject.py
+|  ├──movable.py
+|  ├──player.py
+|  ├──enemy.py
+|  ├──shot.py
+|  └──collectable.py
+├──constants.py
+└──main.py
+```
+
+---
+
+## 📸 Galeria do Projeto
+
+*a preencher*
+
+---
+
+## 🛠️ Ferramentas e Bibliotecas Utilizadas
+
+| Ferramenta | Descrição |
+|------------|-----------|
+| **GitHub** | Repositório do projeto e controle de versão. |
+| **Visual Studio Code** | Ambiente de desenvolvimento. |
+| **Pygame** | Biblioteca para gerenciamento de gráficos, eventos e o *loop* do jogo. |
+| **Piskel** | Criação dos *sprites* pixel art. |
+| **Discord/WhatsApp** | Canais de comunicação interna da equipe. |
+---
+
+## 📋 Divisão de Trabalho
+
+* **Vivian Azevedo — Front-End 1: Telas & Interface** — Menu principal, HUD (contador de seguidores, vidas e barra de ataque), interface do Jogo do Tigrinho, telas de vitória/derrota com textos personalizados e transições entre fases.
+
+* **Sâmia Freitas — Front-End 2: Personagens & Animações** — *Sprite sheet* da protagonista (idle, run, jump, shoot), *sprites* dos inimigos Felca e Hater com animações de derrota, animações de coleta, dano e efeitos de tiro.
+
+* **Beatriz Luna — Front-End 3: Cenários, Coletáveis & Identidade Visual** — *Backgrounds* das 3 fases (Rezende, Zé Felipe, Vini Jr), design de plataformas, *sprites* dos coletáveis (Seguidores, Produtos WePink, Stories) e guia de estilo visual (paleta e padrão pixel art).
+
+* **Gabriela Leite — Back-End 1: Mecânicas do Jogador** — Movimentação, pulo, gravidade e colisão com plataformas; sistema de tiro e lógica da barra de ataque (efeitos por tipo de Produto WePink); gerenciamento de vidas.
+
+* **[Nome] — Back-End 2: Inimigos & Coletáveis** — IA do Felca (raio de visão, perseguição, roubo de seguidores e vida) e do Hater (perseguição direta); sistema de *spawn* com frequências (50%/30%/20%); efeitos dos coletáveis ao serem pegos e contador por fase.
+
+* **[Nome] — Back-End 3: Fases, Tigrinho & Game Manager** — *Game loop* e controle de estados; gerenciador de fases (contadores de 25/35/60 coletáveis e transições); lógica do Jogo do Tigrinho (apostas variáveis por fase e resultado aleatório); condições de vitória (1M de seguidores) e derrota; *score* global.
+
+---
+
+## 📚 Conceitos da Disciplina Utilizados
+
+* **Orientação a Objetos (POO):** Estrutura central do projeto, com hierarquia de classes (`GameObject` → `Movable` → `Player`/`Enemy`/`Shot`; `GameObject` → `Platform`/`Collectable`).
+* **Herança:** `Player`, `Enemy` e `Shot` herdam de `Movable`, que herda de `GameObject`, reutilizando lógica de posição, física e colisão.
+* **Listas:** Armazenam grupos de inimigos, coletáveis, plataformas e projéteis ativos por fase.
+* **Estruturas Condicionais (If/Else):** Gerenciam estados do jogo (Menu, Fase, Tigrinho, Game Over, Vitória) e lógica de colisão e combate.
+* **Laços de Repetição (While/For):** Mantêm o *game loop* ativo e iteram sobre grupos de objetos a cada *frame*.
+* **Funções e Métodos:** Modularizam movimentação, física, renderização e detecção de colisão.
+* **Aleatoriedade:** Controla o *spawn* de coletáveis com frequências definidas (50%/30%/20%) e o resultado das apostas no Jogo do Tigrinho.
+
+---
+
+## 💡 Desafios, Erros e Lições Aprendidas
+
+*a preencher*
+
+### Qual foi o maior erro cometido durante o projeto? Como vocês lidaram com ele?
+
+*a preencher*
+
+### Qual foi o maior desafio enfrentado durante o projeto? Como vocês lidaram com ele?
+
+*a preencher*
+
+### Quais as lições aprendidas durante o projeto?
+
+*a preencher*
