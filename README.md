@@ -9,7 +9,7 @@
 * **Gabriela Leite** — ([gaabileite](https://github.com/gaabileite))
 * **Leonardo Kitner** — ([leonardokitner](https://github.com/leonardokitner))
 * **Sâmia Freitas** — ([saamiafreitas](https://github.com/saamiafreitas))
-* **Vivian Azevedo** — ([saamiafreitas](https://github.com/vivianazevedo))
+* **Vivian Azevedo** — ([vivianazevedo](https://github.com/vivianazevedo))
 
 ---
 
