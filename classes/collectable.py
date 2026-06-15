@@ -11,9 +11,11 @@ class Collectable(GameObject):
 
         if 'follower' in type:
             self.percentage = 50
+            self.image = follower_image
 
         if 'story' in type:
             self.percentage = 20
+            self.image = story_image
 
         if 'product' in type:
             self.percentage = 10
