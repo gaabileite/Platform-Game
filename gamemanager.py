@@ -55,6 +55,14 @@ class GameManager:
         elif self.state in (GameState.TIGRINHO_1, GameState.TIGRINHO_2, GameState.TIGRINHO_3):
             self.setup_tigrinho()
 
+    def advance_phase(self):
+        if self.phase_number < 3:
+            self.phase_number += 1
+            next_phases = {1: GameState.PHASE_1, 2: GameState.PHASE_2, 3: GameState.PHASE_3}
+            self.change_state(next_phases[self.phase_number])
+        else:
+            self.change_state(GameState.WIN)
+
     def setup_phase(self):
         self.collectable_count = 0
         self.enemies      = []
