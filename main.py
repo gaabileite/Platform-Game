@@ -12,12 +12,41 @@ from classes.collectable import *
 from constants import *
 
 pygame.init()
-screen = pygame.display.set_mode((internal_width, internal_height))
+screen = pygame.display.set_mode((window_width, window_height))
+surface = pygame.Surface((internal_width, internal_height))
+clock = pygame.time.Clock()
+
+player = Player(player_starter_x, player_starter_y)
+platforms = [Platform(0, 160, 320, 20)]  # chão provisório
+shots = []
 
 while True:
     for event in pygame.event.get():
         if event.type == QUIT:
             pygame.quit()
             exit()
+
+    player.handle_movement()
+    shot = player.shoot()
+    if shot:
+        shots.append(shot)
+
+    player.update(screen, platforms)
+
+    for shot in shots[:]:
+        shot.move_bullet()
+        if shot.x < 0 or shot.x > internal_width:
+            shots.remove(shot)
+            
+    surface.fill(background_color)
+    pygame.draw.rect(surface, player.color, player.get_rect())
+    for platform in platforms:
+        pygame.draw.rect(surface, platform.color, platform.get_rect())
+    for shot in shots:
+        pygame.draw.rect(surface, shot.color, shot.get_rect())
+
+    scaled = pygame.transform.scale(surface, (window_width, window_height))
+    screen.blit(scaled, (0, 0))
+    clock.tick(60)
 
     pygame.display.update()
