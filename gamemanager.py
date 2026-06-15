@@ -6,23 +6,24 @@ from constants import *
 class GameState(Enum):
     MENU = 0
     PHASE_1 = 1
-    TIGRINHO_1 = 2
-    PHASE_2 = 3
-    TIGRINHO_2 = 4
-    PHASE_3 = 5
-    TIGRINHO_3 = 6
-    WIN = 7
-    LOSE = 8
+    #TIGRINHO_1 = 2
+    PHASE_2 = 2
+    #TIGRINHO_2 = 4
+    PHASE_3 = 3
+    #TIGRINHO_3 = 6
+    WIN = 4
+    LOSE = 5
 
 class GameManager:
-    COLLECTABLE_LIMITS = {1 : 25, 2 : 35, 3 : 60}
+    COLLECTABLE_LIMITS = {1 : 50, 2 : 70, 3 : 120}
+    ENEMIES_PER_STATE = {1 : 15, 2 : 30, 3 : 45}
     COLLECTABLE_GOAL = 100
 
     def __init__(self):
         self.state = GameState.MENU
         self.phase_number = 1
-        self.tigrinho = None
-        self.tigrinho_number = None
+        #self.tigrinho = None
+        #self.tigrinho_number = None
         self.player = Player(player_starter_x, player_starter_y)
         self.platforms = []
         self.enemies = []
@@ -35,11 +36,11 @@ class GameManager:
 
     def check_phase_end(self):
         limit = self.COLLECTABLE_LIMITS[self.phase_number]
-        if self.collectable_count >= limit:
-            next_tigrinho = [GameState.TIGRINHO_1,
-                             GameState.TIGRINHO_2,
-                             GameState.TIGRINHO_3]
-            self.change_state(next_tigrinho[self.phase_number - 1])
+        #if self.collectable_count >= limit:
+            #next_tigrinho = [GameState.TIGRINHO_1,
+                             #GameState.TIGRINHO_2,
+                             #GameState.TIGRINHO_3]
+            #self.change_state(next_tigrinho[self.phase_number - 1])
 
     def check_game_over(self):
         if self.player.life <= 0 or self.player.follower_count <= 0:
@@ -49,11 +50,11 @@ class GameManager:
         if self.collectable_count >= self.COLLECTABLE_GOAL:
             self.change_state(GameState.WIN)
 
-    def enter_phase(self):
-        if self.state in (GameState.PHASE_1, GameState.PHASE_2, GameState.PHASE_3):
-            self.setup_phase()
-        elif self.state in (GameState.TIGRINHO_1, GameState.TIGRINHO_2, GameState.TIGRINHO_3):
-            self.setup_tigrinho()
+    #def enter_phase(self):
+        #if self.state in (GameState.PHASE_1, GameState.PHASE_2, GameState.PHASE_3):
+            #self.setup_phase()
+        #elif self.state in (GameState.TIGRINHO_1, GameState.TIGRINHO_2, GameState.TIGRINHO_3):
+            #self.setup_tigrinho()
 
     def advance_phase(self):
         if self.phase_number < 3:
@@ -69,8 +70,8 @@ class GameManager:
         self.collectables = []
         self.platforms    = []
 
-    def setup_tigrinho(self):
-        self.tigrinho = TigrinhoGame(self.phase_number, self.player)
+    #def setup_tigrinho(self):
+        #self.tigrinho = TigrinhoGame(self.phase_number, self.player)
 
     def update(self):
         if self.state in (GameState.PHASE_1, GameState.PHASE_2, GameState.PHASE_3):
@@ -85,17 +86,17 @@ class GameManager:
             self.check_game_over()
             self.check_win()
 
-        elif self.state in (GameState.TIGRINHO_1, GameState.TIGRINHO_2, GameState.TIGRINHO_3):
-            if self.tigrinho.state == 'result':
-                resultado = self.tigrinho.resolve()
+        #elif self.state in (GameState.TIGRINHO_1, GameState.TIGRINHO_2, GameState.TIGRINHO_3):
+            #if self.tigrinho.state == 'result':
+                #resultado = self.tigrinho.resolve()
 
-                if resultado == 'win':
-                    self.check_win()         # aposta pode ter levado a 1M
-                    if self.state != GameState.WIN:
-                        self.advance_phase()
+                #if resultado == 'win':
+                    #self.check_win()         # aposta pode ter levado a 1M
+                    #if self.state != GameState.WIN:
+                        #self.advance_phase()
 
-                elif resultado == 'skip':
-                    self.advance_phase()
+                #elif resultado == 'skip':
+                    #self.advance_phase()
 
-                elif resultado == 'game_over':
-                    self.change_state(GameState.LOSE)
+                #elif resultado == 'game_over':
+                    #self.change_state(GameState.LOSE)
