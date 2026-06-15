@@ -13,14 +13,20 @@ class Player(Movable):
         self.story_count = 0
     
     def handle_movement(self):
+        last_key = None
         if pygame.key.get_pressed()[K_d]:
             self.move('right')
+            last_key = 'D'
 
         if pygame.key.get_pressed()[K_a]:
             self.move('left')
+            last_key = 'A'
 
         if pygame.key.get_pressed()[K_SPACE]:
             self.move('jump')
+            last_key = '_'
+
+        return last_key
 
     def add_collectable(self, collectable):
         if self.check_collision(collectable) and collectable.type == 'story':
@@ -45,12 +51,16 @@ class Player(Movable):
         elif self.check_collision(collectable) and collectable.type == 'good product':
             self.shot_count += 3
     
-    def shoot(self):
-        if pygame.key.get_pressed()[K_RIGHT] and self.shot_count > 0:
+    def shoot(self): #RESOLVER COMO VAI SER O SISTEMA DE TIRO
+        if pygame.key.get_pressed()[K_e] and self.shot_count > 0 and self.handle_movement() == "D":
             self.shot_count -= 1
             return Shot(self.x, self.y, 'right')
 
-        elif pygame.key.get_pressed()[K_LEFT] and self.shot_count > 0:
+        elif pygame.key.get_pressed()[K_e] and self.shot_count > 0 and self.handle_movement() == "A":
+            self.shot_count -= 1
+            return Shot(self.x, self.y, 'left')
+        
+        elif pygame.key.get_pressed()[K_e] and self.shot_count > 0 and pygame.key.get_pressed()[K_w]:
             self.shot_count -= 1
             return Shot(self.x, self.y, 'left')
 
