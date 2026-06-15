@@ -31,7 +31,7 @@ while True:
     if shot:
         shots.append(shot)
 
-    player.update(platforms)
+    player.update(screen, platforms)
 
     for shot in shots[:]:
         shot.move_bullet()
