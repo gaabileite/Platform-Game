@@ -19,7 +19,7 @@ player_color = (255,0,127)
 player_life = 3
 player_image = ''
 player_speed = 2
-player_boost = 5
+player_boost = 7
 
 #ENEMY INFO
 enemy_color = (0,0,0)
