@@ -68,7 +68,3 @@ class Player(Movable):
  
         self.shot_count -= 1
         return Shot(self.x, self.y, vx, vy)
-
-    def update_player_choices(self):
-        self.handle_movement()
-        self.shoot()
