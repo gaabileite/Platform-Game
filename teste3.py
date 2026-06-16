@@ -45,6 +45,8 @@ while True:
     distance = enemy.get_distance(player)
     if distance < persuit_range:
         enemy.follow_player(player)
+    
+
     surface.fill(background_color)
     pygame.draw.rect(surface, player.color, camera.apply(player))
     pygame.draw.rect(surface, enemy_color, camera.apply(enemy))
