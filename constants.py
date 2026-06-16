@@ -27,7 +27,7 @@ hater_life = 1
 felca_life = 2
 enemy_image = ''
 enemy_speed = 0.5
-enemy_boost = 1
+persuit_range = 100
 
 #BULLET INFO
 shot_color = (0,0,0)
