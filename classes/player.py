@@ -67,4 +67,4 @@ class Player(Movable):
             return None
  
         self.shot_count -= 1
-        return Shot(self.x, self.y, vx, vy)
+        return Shot(self.x + self.width // 2, self.y + self.height // 2, vx, vy)
