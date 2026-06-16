@@ -1,4 +1,5 @@
 import pygame
+import math
 from pygame.locals import *
 from constants import *
 from classes.movable import *
@@ -11,26 +12,23 @@ class Player(Movable):
         self.follower_count = 0
         self.shot_count = 0
         self.story_count = 0
-    
+        self.last_direction = 'right'
+
     def handle_movement(self):
-        last_key = None
         if pygame.key.get_pressed()[K_d]:
             self.move('right')
-            last_key = 'D'
+            self.last_direction = 'right'
 
         if pygame.key.get_pressed()[K_a]:
             self.move('left')
-            last_key = 'A'
+            self.last_direction = 'left'
 
         if pygame.key.get_pressed()[K_SPACE]:
             self.move('jump')
-            last_key = '_'
-
-        return last_key
 
     def add_collectable(self, collectable):
         if self.check_collision(collectable) and collectable.type == 'story':
-            self.story_count +=1
+            self.story_count += 1
 
             if self.story_count == 5:
                 if self.life < 5:
@@ -50,19 +48,26 @@ class Player(Movable):
 
         elif self.check_collision(collectable) and collectable.type == 'good product':
             self.shot_count += 3
-    
-    def shoot(self): #RESOLVER COMO VAI SER O SISTEMA DE TIRO
-        if pygame.key.get_pressed()[K_e] and self.shot_count > 0 and self.handle_movement() == "D":
-            self.shot_count -= 1
-            return Shot(self.x, self.y, 'right')
 
-        elif pygame.key.get_pressed()[K_e] and self.shot_count > 0 and self.handle_movement() == "A":
-            self.shot_count -= 1
-            return Shot(self.x, self.y, 'left')
-        
-        elif pygame.key.get_pressed()[K_e] and self.shot_count > 0 and pygame.key.get_pressed()[K_w]:
-            self.shot_count -= 1
-            return Shot(self.x, self.y, 'left')
+    def shoot(self):
+        if self.shot_count <= 0:
+            return None
+ 
+        vx, vy = 0, 0
+        if pygame.key.get_pressed()[K_RIGHT]:
+            vx = shot_speed
+        elif pygame.key.get_pressed()[K_LEFT]:
+            vx = -shot_speed
+        if pygame.key.get_pressed()[K_UP]:
+            vy = -shot_speed
+        elif pygame.key.get_pressed()[K_DOWN]:
+            vy = shot_speed
+ 
+        if vx == 0 and vy == 0:
+            return None
+ 
+        self.shot_count -= 1
+        return Shot(self.x, self.y, vx, vy)
 
     def update_player_choices(self):
         self.handle_movement()
