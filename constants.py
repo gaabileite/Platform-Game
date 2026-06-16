@@ -1,7 +1,7 @@
 #SCREEN INFO
 internal_width = 320
 internal_height = 180
-scale = 4
+scale = 3
 window_width = internal_width * scale
 window_height = internal_height * scale
 background_color = (255,255,255)
