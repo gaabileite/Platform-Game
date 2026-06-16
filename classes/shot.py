@@ -4,10 +4,12 @@ from constants import *
 from classes.movable import *
 
 class Shot(Movable):
-    def __init__(self, x, y, direction):
+    def __init__(self, x, y):
         super().__init__(x, y, shot_color, 0, shot_image, shot_speed, 0)
-
-        self.direction = direction
+ 
+        self.vx = shot_speed
+        self.vy = shot_speed
     
     def move_bullet(self):
-        self.move(self.direction)
+        self.x += self.vx
+        self.y += self.vy
