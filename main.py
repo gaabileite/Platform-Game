@@ -2,6 +2,7 @@ import pygame
 from pygame.locals import *
 from sys import exit
 import random
+import math
 from classes.gameobject import *
 from classes.movable import *
 from classes.player import *
