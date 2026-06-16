@@ -9,12 +9,15 @@ from classes.enemy import *
 from classes.shot import *
 from classes.platform import *
 from classes.collectable import *
+from classes.camera import *
 from constants import *
 
 pygame.init()
 screen = pygame.display.set_mode((window_width, window_height))
 surface = pygame.Surface((internal_width, internal_height))
 clock = pygame.time.Clock()
+
+camera = Camera(internal_width * scale)
 
 player = Player(player_starter_x, player_starter_y)
 platforms = [Platform(0, 160, 320, 20)]  # chão provisório
@@ -30,6 +33,7 @@ while True:
     shot = player.shoot()
     if shot:
         shots.append(shot)
+    camera.follow(player)
 
     player.update(screen, platforms)
 
@@ -39,7 +43,8 @@ while True:
             shots.remove(shot)
             
     surface.fill(background_color)
-    pygame.draw.rect(surface, player.color, player.get_rect())
+    pygame.draw.rect(surface, player.color, camera.apply(player))
+
     for platform in platforms:
         pygame.draw.rect(surface, platform.color, platform.get_rect())
     for shot in shots:
