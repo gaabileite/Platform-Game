@@ -18,13 +18,14 @@ class Movable(GameObject):
             self.vy += gravity
             self.y += self.vy
 
-    def check_platform_collision(self, screen, platforms): #platforms is the list of platform objects
+    def check_platform_collision(self, screen, platforms):
         self.on_ground = False
 
         for platform in platforms:
-            plt = pygame.draw.rect(screen, platform_color, platform.get_rect())
             slf = pygame.draw.rect(screen, self.color, self.get_rect())
+            plt = pygame.draw.rect(screen, platform.color, platform.get_rect())
             if slf.colliderect(plt):
+
                 if self.vy >= 0:
                     self.y = platform.y - self.height
                     self.vy = 0
