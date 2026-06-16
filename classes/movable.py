@@ -18,12 +18,12 @@ class Movable(GameObject):
             self.vy += gravity
             self.y += self.vy
 
-    def check_platform_collision(self, screen, platforms):
+    def check_platform_collision(self, surface, platforms):
         self.on_ground = False
 
         for platform in platforms:
-            slf = pygame.draw.rect(screen, self.color, self.get_rect())
-            plt = pygame.draw.rect(screen, platform.color, platform.get_rect())
+            slf = pygame.draw.rect(surface, self.color, self.get_rect())
+            plt = pygame.draw.rect(surface, platform.color, platform.get_rect())
             if slf.colliderect(plt):
 
                 if self.vy >= 0:
@@ -50,6 +50,6 @@ class Movable(GameObject):
         if self.check_collision(other):
             self.life -= 1 
     
-    def update(self, screen, platforms):
+    def update(self, surface, platforms):
         self.apply_gravity()
-        self.check_platform_collision(screen, platforms)
+        self.check_platform_collision(surface, platforms)
