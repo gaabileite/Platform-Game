@@ -38,20 +38,20 @@ while True:
         shots.append(shot)
     camera.follow(player)
 
-    player.update(screen, platforms)
-
-    for shot in shots[:]:
-        shot.move_bullet()
-        if shot.x < 0 or shot.x > internal_width:
-            shots.remove(shot)
+    player.update(surface, platforms)
             
     surface.fill(background_color)
     pygame.draw.rect(surface, player.color, camera.apply(player))
 
     for platform in platforms:
-        pygame.draw.rect(surface, platform.color, platform.get_rect())
+        pygame.draw.rect(surface, platform.color, camera.apply(platform))
     for shot in shots:
-        pygame.draw.rect(surface, shot.color, shot.get_rect())
+        pygame.draw.rect(surface, shot.color, camera.apply(shot))
+
+    for shot in shots[:]:
+        shot.move_bullet()
+        if shot.x < 0 or shot.x > internal_width:
+            shots.remove(shot)
 
     scaled = pygame.transform.scale(surface, (window_width, window_height))
     screen.blit(scaled, (0, 0))
