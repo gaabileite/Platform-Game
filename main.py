@@ -20,7 +20,10 @@ clock = pygame.time.Clock()
 camera = Camera(internal_width * scale)
 
 player = Player(player_starter_x, player_starter_y)
-platforms = [Platform(0, 160, 320, 20)]  # chão provisório
+platforms = [
+    Platform(0, 160, 320, 20),
+    Platform(100, 120, 80, 10),
+    Platform(250, 100, 60 , 10)]
 shots = []
 
 while True:
