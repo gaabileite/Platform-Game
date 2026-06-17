@@ -21,6 +21,7 @@ clock = pygame.time.Clock()
 camera = Camera(internal_width * scale)
 
 player = Player(player_starter_x, player_starter_y)
+enemy = Enemy(300, 100 , hater_life)
 platforms = [
     Platform(0, 160, 320, 20),
     Platform(100, 120, 80, 10),
@@ -43,6 +44,7 @@ while True:
             
     surface.fill(background_color)
     pygame.draw.rect(surface, player.color, camera.apply(player))
+    pygame.draw.rect(surface, enemy_color, camera.apply(enemy))
 
     for platform in platforms:
         pygame.draw.rect(surface, platform.color, camera.apply(platform))
