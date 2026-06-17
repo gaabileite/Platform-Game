@@ -19,7 +19,7 @@ surface = pygame.Surface((internal_width, internal_height))
 clock = pygame.time.Clock()
 
 camera = Camera(internal_width * scale)
-game_over = False
+game_over = GameOver(False)
 
 player = Player(player_starter_x, player_starter_y)
 enemies = [
@@ -76,6 +76,9 @@ while True:
 
         for i in range(enemy_dead):
             _ = enemies.pop(i)
+
+    else:
+        game_over.update()
     
     scaled = pygame.transform.scale(surface, (window_width, window_height))
     screen.blit(scaled, (0, 0))
