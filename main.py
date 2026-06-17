@@ -51,7 +51,7 @@ while True:
 
     for shot in shots[:]:
         shot.move_bullet()
-        if shot.x < 0 or shot.x > internal_width:
+        if shot.x < 0 or shot.x > internal_width or shot.y < 0 or shot.y > internal_height:
             shots.remove(shot)
 
     scaled = pygame.transform.scale(surface, (window_width, window_height))
