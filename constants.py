@@ -6,6 +6,7 @@ window_width = internal_width * scale
 window_height = internal_height * scale
 background_color = (255,255,255)
 background_image = ''
+game_over_bg = (0,0,0)
 
 #PLATFORM INFO
 platform_color = (238,222,197)
