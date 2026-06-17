@@ -47,8 +47,9 @@ while True:
                 
         surface.fill(background_color)
         pygame.draw.rect(surface, player.color, camera.apply(player))
-        pygame.draw.rect(surface, enemy_color, camera.apply(enemy))
-    
+        
+        for enemy in enemies:
+            pygame.draw.rect(surface, enemy_color, camera.apply(enemy))
         for platform in platforms:
             pygame.draw.rect(surface, platform.color, camera.apply(platform))
         for shot in shots:
