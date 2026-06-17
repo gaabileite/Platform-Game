@@ -12,16 +12,17 @@ class Player(Movable):
         self.follower_count = 0
         self.shot_count = 0
         self.story_count = 0
-        self.last_direction = 'right'
+        self.facing = 'right' # direção padrão
+        self.just_shot = False # bool se acabou de atirar
 
     def handle_movement(self):
         if pygame.key.get_pressed()[K_d]:
             self.move('right')
-            self.last_direction = 'right'
+            self.facing = 'right'
 
         if pygame.key.get_pressed()[K_a]:
             self.move('left')
-            self.last_direction = 'left'
+            self.facing = 'left'
 
         if pygame.key.get_pressed()[K_SPACE]:
             self.move('jump')
@@ -50,21 +51,16 @@ class Player(Movable):
             self.shot_count += 3
 
     def shoot(self):
-        if self.shot_count <= 0:
+        # se K_e for apertado e acabou de tirar (no frame anterior) ou se a quantidade de tiros disponíveis for <= 0 ou se não apertar K_e, não há tiro
+        if (pygame.get_pressed()[K_e] and self.just_shot) or self.shot_count <= 0 or not pygame_get_pressed()[K_e]:
             return None
- 
-        vx, vy = 0, 0
-        if pygame.key.get_pressed()[K_RIGHT]:
-            vx = shot_speed
-        elif pygame.key.get_pressed()[K_LEFT]:
-            vx = -shot_speed
-        if pygame.key.get_pressed()[K_UP]:
-            vy = -shot_speed
-        elif pygame.key.get_pressed()[K_DOWN]:
-            vy = shot_speed
- 
-        if vx == 0 and vy == 0:
-            return None
- 
+        
+        # se K_e for apertado, então acabou de atirar
+        self.just_shot = pygame.get_pressed()[K_e]
+
         self.shot_count -= 1
-        return Shot(self.x + self.width // 2, self.y + self.height // 2, vx, vy)
+
+        if pygame.get_pressed()[K_w]:
+            return Shot(self.x + self.width // 2, self.y + self.height // 2, 'up')
+
+        return Shot(self.x + self.width // 2, self.y + self.height // 2, self.facing)
