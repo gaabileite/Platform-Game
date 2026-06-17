@@ -37,7 +37,7 @@ class Movable(GameObject):
             self.x += self.speed
         
         elif direction == 'left':
-            self.x -= self.speed
+            self.x = max(0, self.x - self.speed)
         
         elif direction == 'jump' and self.on_ground:
             self.vy = -self.boost
