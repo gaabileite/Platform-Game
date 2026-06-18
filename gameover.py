@@ -43,4 +43,5 @@ class GameOver:
                 Platform(250, 100, 60 , 10)]
             shots = []
             self.state = False
-            return player, enemies, death, platforms, shots
+            
+        return player, enemies, death, platforms, shots
