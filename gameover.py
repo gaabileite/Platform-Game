@@ -22,7 +22,7 @@ class GameOver:
     def __init__(self, state):
         self.state = state
 
-    def update(self, surface):
+    def update(self, surface, player, enemies, death, platforms, shots):
         surface.fill(game_over_bg)
 
         title_text = font_title.render("GAME OVER", True, background_color)
