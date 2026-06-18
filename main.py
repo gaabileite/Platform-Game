@@ -24,7 +24,9 @@ game_over = GameOver(False)
 player = Player(player_starter_x, player_starter_y)
 enemies = [
     Enemy(300, 100 , hater_life)]
+death = Platforms(0, 180, 320, 20)
 platforms = [
+    death,
     Platform(0, 160, 320, 20),
     Platform(100, 120, 80, 10),
     Platform(250, 100, 60 , 10)]
@@ -78,7 +80,7 @@ while True:
             _ = enemies.pop(i)
 
     else:
-        game_over.update()
+        player, enemies, death, platforms, shots = game_over.update(surface)
     
     scaled = pygame.transform.scale(surface, (window_width, window_height))
     screen.blit(scaled, (0, 0))
