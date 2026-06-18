@@ -24,7 +24,7 @@ game_over = GameOver(False)
 player = Player(player_starter_x, player_starter_y)
 enemies = [
     Enemy(300, 100 , hater_life)]
-death = Platforms(0, 180, 320, 20)
+death = Platform(0, 180, 320, 20)
 platforms = [
     death,
     Platform(0, 160, 320, 20),
