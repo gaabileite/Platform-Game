@@ -52,15 +52,15 @@ class Player(Movable):
 
     def shoot(self):
         # se K_e for apertado e acabou de tirar (no frame anterior) ou se a quantidade de tiros disponíveis for <= 0 ou se não apertar K_e, não há tiro
-        if (pygame.get_pressed()[K_e] and self.just_shot) or self.shot_count <= 0 or not pygame_get_pressed()[K_e]:
+        if (pygame.key.get_pressed()[K_e] and self.just_shot) or self.shot_count <= 0 or not pygame.key.get_pressed()[K_e]:
             return None
         
         # se K_e for apertado, então acabou de atirar
-        self.just_shot = pygame.get_pressed()[K_e]
+        self.just_shot = pygame.key.get_pressed()[K_e]
 
         self.shot_count -= 1
 
-        if pygame.get_pressed()[K_w]:
+        if pygame.key.get_pressed()[K_w]:
             return Shot(self.x + self.width // 2, self.y + self.height // 2, 'up')
 
         return Shot(self.x + self.width // 2, self.y + self.height // 2, self.facing)
