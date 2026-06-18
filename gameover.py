@@ -32,5 +32,15 @@ class GameOver:
         surface.blit(subtitle_text, subtitle_text.get_rect(center=(internal_width // 2, internal_height // 2 + 15)))
 
         if pygame.keys.get_pressed()[K_SPACE]:
-            
+            player = Player(player_starter_x, player_starter_y)
+            enemies = [
+                Enemy(300, 100 , hater_life)]
+            death = Platform(0, 180, 320, 20)
+            platforms = [
+                death,
+                Platform(0, 160, 320, 20),
+                Platform(100, 120, 80, 10),
+                Platform(250, 100, 60 , 10)]
+            shots = []
             self.state = False
+            return player, enemies, death, platforms, shots
