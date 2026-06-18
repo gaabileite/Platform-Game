@@ -31,7 +31,7 @@ class GameOver:
         subtitle_text = font_subtitle.render("Press SPACE to reset", True, player_color)
         surface.blit(subtitle_text, subtitle_text.get_rect(center=(internal_width // 2, internal_height // 2 + 15)))
 
-        if pygame.keys.get_pressed()[K_SPACE]:
+        if pygame.key.get_pressed()[K_SPACE]:
             player = Player(player_starter_x, player_starter_y)
             enemies = [
                 Enemy(300, 100 , hater_life)]
