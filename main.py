@@ -80,7 +80,7 @@ while True:
             _ = enemies.pop(i)
 
     else:
-        player, enemies, death, platforms, shots = game_over.update(surface)
+        player, enemies, death, platforms, shots = game_over.update(surface, player, enemies, death, platforms, shots)
     
     scaled = pygame.transform.scale(surface, (window_width, window_height))
     screen.blit(scaled, (0, 0))
