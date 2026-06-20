@@ -3,13 +3,12 @@ from pygame.locals import *
 from constants import *
 
 class GameObject:
-    def __init__(self, x, y, color, image):
-        self.x = x
-        self.y = y
-        self.width = 20
-        self.height = 20
+    def __init__(self, x, y, color, width, height):
+        self.x = int(x)
+        self.y = int(y)
+        self.width = width
+        self.height = height
         self.color = color
-        self.image = image
 
     def get_rect(self):
-        return self.x, self.y, self.width, self.height
+        return pygame.Rect(self.x, self.y, self.width, self.height)
