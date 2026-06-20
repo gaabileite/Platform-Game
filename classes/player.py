@@ -1,5 +1,4 @@
 import pygame
-import math
 from pygame.locals import *
 from constants import *
 from classes.movable import *
@@ -7,13 +6,13 @@ from classes.shot import *
 
 class Player(Movable):
     def __init__(self, x, y):
-        super().__init__(x, y, player_color, player_life, player_image, player_speed, player_boost)
+        super().__init__(x, y, player_color, player_life, player_speed, player_boost, player_size, player_size)
 
         self.follower_count = 0
         self.shot_count = 0
         self.story_count = 0
-        self.facing = 'right' # direção padrão
-        self.just_shot = False # bool se acabou de atirar
+        self.facing = 'right'
+        self.just_shot = False
 
     def handle_movement(self):
         if pygame.key.get_pressed()[K_d]:
@@ -51,16 +50,17 @@ class Player(Movable):
             self.shot_count += 3
 
     def shoot(self):
-        # se K_e for apertado e acabou de tirar (no frame anterior) ou se a quantidade de tiros disponíveis for <= 0 ou se não apertar K_e, não há tiro
         if (pygame.key.get_pressed()[K_e] and self.just_shot) or self.shot_count <= 0 or not pygame.key.get_pressed()[K_e]:
             return None
         
-        # se K_e for apertado, então acabou de atirar
         self.just_shot = pygame.key.get_pressed()[K_e]
-
         self.shot_count -= 1
 
         if pygame.key.get_pressed()[K_w]:
             return Shot(self.x + self.width // 2, self.y + self.height // 2, 'up')
 
         return Shot(self.x + self.width // 2, self.y + self.height // 2, self.facing)
+    
+    def update(self, platforms):
+        self.apply_gravity()
+        self.check_platform_collision(platforms)
