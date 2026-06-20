@@ -1,5 +1,3 @@
-import pygame
-from pygame.locals import *
 from constants import *
 from classes.gameobject import *
 
