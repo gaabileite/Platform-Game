@@ -1,11 +1,9 @@
-import pygame
-from pygame.locals import *
 from constants import *
 from classes.gameobject import *
     
 class Movable(GameObject):
-    def __init__(self, x, y, color, life, image, speed, boost):
-        super().__init__(x, y, color, image)
+    def __init__(self, x, y, color, life, speed, boost, width, height):
+        super().__init__(x, y, color, width, height)
 
         self.speed = speed
         self.boost = boost
@@ -18,14 +16,11 @@ class Movable(GameObject):
             self.vy += gravity
             self.y += self.vy
 
-    def check_platform_collision(self, surface, platforms):
+    def check_platform_collision(self, platforms):
         self.on_ground = False
 
         for platform in platforms:
-            slf = pygame.draw.rect(surface, self.color, self.get_rect())
-            plt = pygame.draw.rect(surface, platform.color, platform.get_rect())
-            if slf.colliderect(plt):
-
+            if self.check_collision(platform):
                 if self.vy >= 0:
                     self.y = platform.y - self.height
                     self.vy = 0
@@ -38,6 +33,9 @@ class Movable(GameObject):
         
         elif direction == 'left':
             self.x = max(0, self.x - self.speed)
+
+        elif direction == 'up':
+            self.y -= self.speed
         
         elif direction == 'jump' and self.on_ground:
             self.vy = -self.boost
@@ -49,7 +47,3 @@ class Movable(GameObject):
     def take_damage(self, other):
         if self.check_collision(other):
             self.life -= 1 
-    
-    def update(self, surface, platforms):
-        self.apply_gravity()
-        self.check_platform_collision(surface, platforms)

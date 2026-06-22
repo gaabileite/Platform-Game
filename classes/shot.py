@@ -1,15 +1,14 @@
-import pygame
-from pygame.locals import *
 from constants import *
 from classes.movable import *
 
 class Shot(Movable):
-    def __init__(self, x, y, vx, vy):
-        super().__init__(x, y, shot_color, 0, shot_image, shot_speed, 0)
+    def __init__(self, x, y, direction):
+        super().__init__(x, y, shot_color, 0, shot_speed, 0, shot_size, shot_size)
  
-        self.vx = vx
-        self.vy = vy
+        self.direction = direction
     
     def move_bullet(self):
-        self.x += self.vx
-        self.y += self.vy
+        self.move(self.direction)
+
+    def update(self):
+        self.move_bullet()
