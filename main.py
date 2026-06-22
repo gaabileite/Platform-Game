@@ -6,31 +6,30 @@ from classes.movable import *
 from classes.player import *
 from classes.enemy import *
 from classes.shot import *
-from classes.game_manager import *
+from game_manager import *
 from classes.platform import *
 from classes.collectable import *
 from classes.camera import *
 from constants import *
 from level import *
-from phases.game_running import *
-from phases.game_over import *
-from phases.game_start import *
-from phases.game_won import *
+from game_phases.gamerunning import *
+from game_phases.gameover import *
+from game_phases.gamestart import *
+from game_phases.gamewon import *
 
+# Definições iniciais padrão do Pygame e criação da janela
 pygame.init()
 screen = pygame.display.set_mode((window_width, window_height))
 surface = pygame.Surface((internal_width, internal_height))
 pygame.display.set_caption("WEGLOW: A Ascensão de Virgínia")
 clock = pygame.time.Clock()
 
+# Instanciação do GameManager e criação dos objetos do jogo
+game_manager = GameManager()
 camera = Camera(LEVEL_WIDTH)
 player = Player(player_starter_x, player_starter_y)
-enemies = [
-    Enemy(300, 100)]
 death, platforms, enemies, flag = create_level()
 shots = []
-
-state = 'game-start'
 
 while True:
     for event in pygame.event.get():
@@ -41,16 +40,23 @@ while True:
             if event.key == K_RETURN:
                 game_manager.continue_game()
 
-    if state == 'game-running':
-        state = game_running(player, enemies, death, platforms, shots, camera, surface, state, flag)
+    # Verificação de progresso do jogador para transição entre fases
+    game_manager.check_progress(player)
 
-    elif state == 'game-over':
-        player, enemies, death, platforms, shots, state, flag = gameover(surface, player, enemies, death, platforms, shots, state, flag)
-    
-    elif state == 'game-start':
+    # GAME START
+    if game_manager.current_phase == 0:
         player, enemies, death, platforms, shots, state, flag = gamestart(surface, player, enemies, death, platforms, shots, state, flag)
 
-    elif state == 'game-won':
+    # GAME RUNNING: PHASE 1
+    elif game_manager.current_phase == 1:
+        state = game_running(player, enemies, death, platforms, shots, camera, surface, state, flag)
+
+    # GAME OVER
+    elif game_manager.current_phase == 4:
+        player, enemies, death, platforms, shots, state, flag = gameover(surface, player, enemies, death, platforms, shots, state, flag)
+    
+    # GAME WON
+    elif game_manager.current_phase == 6:
         player, enemies, death, platforms, shots, state, flag = gamewon(surface, player, enemies, death, platforms, shots, state, flag)
 
     # SCREEN UPDATE 
