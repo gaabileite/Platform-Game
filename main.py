@@ -6,6 +6,7 @@ from classes.movable import *
 from classes.player import *
 from classes.enemy import *
 from classes.shot import *
+from classes.game_manager import *
 from classes.platform import *
 from classes.collectable import *
 from classes.camera import *
@@ -36,6 +37,9 @@ while True:
         if event.type == QUIT:
             pygame.quit()
             exit()
+        if event.type == KEYDOWN:
+            if event.key == K_RETURN:
+                game_manager.continue_game()
 
     if state == 'game-running':
         state = game_running(player, enemies, death, platforms, shots, camera, surface, state, flag)
