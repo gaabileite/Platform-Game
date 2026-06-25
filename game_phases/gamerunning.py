@@ -10,8 +10,6 @@ from classes.collectable import *
 from classes.camera import *
 from constants import *
 from level import *
-from phases.game_running import *
-
 def game_running(player, enemies, death, platforms, shots, camera, surface, state, flag):
     player.handle_movement()
     shot = player.shoot()

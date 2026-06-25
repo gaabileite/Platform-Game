@@ -10,8 +10,6 @@ from classes.collectable import *
 from classes.camera import *
 from constants import *
 from level import *
-from phases.game_running import *
-
 pygame.init()
 font_title = pygame.font.SysFont(None, 24)
 font_subtitle = pygame.font.SysFont(None, 22)

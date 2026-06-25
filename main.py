@@ -30,6 +30,7 @@ camera = Camera(LEVEL_WIDTH)
 player = Player(player_starter_x, player_starter_y)
 death, platforms, enemies, flag = create_level()
 shots = []
+state = 'game-start'
 
 while True:
     for event in pygame.event.get():
