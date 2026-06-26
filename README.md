@@ -79,9 +79,9 @@ A estrutura do projeto separa claramente os recursos visuais da lógica do jogo:
 
 * **Vivian Azevedo — Front-End 1: Telas & Interface** — Menu principal, HUD (contador de seguidores, vidas e barra de ataque), interface do Jogo do Tigrinho, telas de vitória/derrota com textos personalizados e transições entre fases.
 
-* **Sâmia Freitas — Front-End 2: Personagens & Animações** — *Sprite sheet* da protagonista (idle, run, jump, shoot), *sprites* dos inimigos Felca e Hater com animações de derrota, animações de coleta, dano e efeitos de tiro.
+* **Beatriz Luna — Front-End 2: Personagens & Animações** — *Sprite sheet* da protagonista (idle, run, jump, shoot), *sprites* dos inimigos Felca e Hater com animações de derrota, animações de coleta, dano e efeitos de tiro.
 
-* **Beatriz Luna — Front-End 3: Cenários, Coletáveis & Identidade Visual** — *Backgrounds* das 3 fases (Rezende, Zé Felipe, Vini Jr), design de plataformas, *sprites* dos coletáveis (Seguidores, Produtos WePink, Stories) e guia de estilo visual (paleta e padrão pixel art).
+* **Sâmia Freitas — Front-End 3: Cenários, Coletáveis & Identidade Visual** — *Backgrounds* das 3 fases (Rezende, Zé Felipe, Vini Jr), design de plataformas, *sprites* dos coletáveis (Seguidores, Produtos WePink, Stories) e guia de estilo visual (paleta e padrão pixel art).
 
 * **Gabriela Leite — Back-End 1: Mecânicas do Jogador** — Movimentação, pulo, gravidade e colisão com plataformas; sistema de tiro e lógica da barra de ataque (efeitos por tipo de Produto WePink); gerenciamento de vidas.
 
