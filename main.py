@@ -30,7 +30,6 @@ camera = Camera(LEVEL_WIDTH)
 player = Player(player_starter_x, player_starter_y)
 death, platforms, enemies, flag = create_level()
 shots = []
-state = 'game-start'
 
 while True:
     for event in pygame.event.get():
@@ -41,26 +40,26 @@ while True:
             if event.key == K_RETURN:
                 game_manager.continue_game()
 
-    # Verificação de progresso do jogador para transição entre fases
+    #Verificação de progresso do jogador para transição entre fases
     game_manager.check_progress(player)
 
-    # GAME START
+    #GAME START
     if game_manager.current_phase == 0:
-        player, enemies, death, platforms, shots, state, flag = gamestart(surface, player, enemies, death, platforms, shots, state, flag)
+        player, enemies, death, platforms, shots, game_manager, flag = gamestart(surface, player, enemies, death, platforms, shots, game_manager, flag)
 
-    # GAME RUNNING: PHASE 1
+    #GAME RUNNING: PHASE 1
     elif game_manager.current_phase == 1:
-        state = game_running(player, enemies, death, platforms, shots, camera, surface, state, flag)
+        game_manager = game_running(player, enemies, death, platforms, shots, camera, surface, game_manager, flag)
 
-    # GAME OVER
-    elif game_manager.current_phase == 4:
-        player, enemies, death, platforms, shots, state, flag = gameover(surface, player, enemies, death, platforms, shots, state, flag)
-    
-    # GAME WON
+    #GAME OVER
     elif game_manager.current_phase == 6:
-        player, enemies, death, platforms, shots, state, flag = gamewon(surface, player, enemies, death, platforms, shots, state, flag)
+        player, enemies, death, platforms, shots, game_manager, flag = gameover(surface, player, enemies, death, platforms, shots, game_manager, flag)
+    
+    #GAME WON
+    elif game_manager.current_phase == 7:
+        player, enemies, death, platforms, shots, game_manager, flag = gamewon(surface, player, enemies, death, platforms, shots, game_manager, flag)
 
-    # SCREEN UPDATE 
+    #SCREEN UPDATE 
     scaled = pygame.transform.scale(surface, (window_width, window_height))
     screen.blit(scaled, (0, 0))
     clock.tick(60)
