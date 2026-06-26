@@ -15,12 +15,12 @@ class GameManager:
     # Verifica se o jogador atingiu os requisitos para avançar para a próxima fase
     def check_progress(self, player):
         if self.current_phase == 1 and player.follower_count >= 200:
-            self.current_phase = 4
+            self.current_phase = 1.5
             player.life += 1
 
         elif self.current_phase == 2 and player.follower_count >= 450:
-            self.current_phase = 4
-            player.life += 1
+            self.current_phase = 2.5
+            player.life += 5
 
         elif self.current_phase == 3 and player.follower_count >= 700:
             self.current_phase = 5
