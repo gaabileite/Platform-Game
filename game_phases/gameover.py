@@ -10,11 +10,14 @@ from classes.collectable import *
 from classes.camera import *
 from constants import *
 from level import *
+from game_manager import *
+from game_phases.gamerunning import *
+
 pygame.init()
 font_title = pygame.font.SysFont(None, 30)
 font_subtitle = pygame.font.SysFont(None, 24)
 
-def gameover(surface, player, enemies, death, platforms, shots, state, flag):
+def gameover(surface, player, enemies, death, platforms, shots, game_manager, flag):
     surface.fill((0,0,0))
 
     title_text = font_title.render("GAME OVER", True, background_color)
@@ -29,6 +32,6 @@ def gameover(surface, player, enemies, death, platforms, shots, state, flag):
             Enemy(300, 100)]
         death, platforms, enemies, flag = create_level()
         shots = []
-        state = 'game-running'
+        game_manager.current_phase = 1
 
-    return player, enemies, death, platforms, shots, state, flag
+    return player, enemies, death, platforms, shots, game_manager, flag
