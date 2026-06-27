@@ -14,17 +14,23 @@ from game_manager import *
 from game_phases.gamerunning import *
 
 pygame.init()
-font_title = pygame.font.SysFont(None, 30)
-font_subtitle = pygame.font.SysFont(None, 24)
+
+#imagens de fundo
+fundo_gameover = pygame.transform.smoothscale(pygame.image.load('bg-gameover.png'), (320, 180))
+btn_tentar     = pygame.transform.smoothscale(pygame.image.load('btn-tentar-novamente.png'), (90, 90))
+
+
+# Escala o fundo para 960x540
+fundo_gameover = pygame.transform.smoothscale(fundo_gameover, (320, 180))
+
+
+rect_tentar = btn_tentar.get_rect(center=(160, 128))
+
 
 def gameover(surface, player, enemies, death, platforms, shots, game_manager, flag):
-    surface.fill((0,0,0))
 
-    title_text = font_title.render("GAME OVER", True, background_color)
-    surface.blit(title_text, title_text.get_rect(center=(internal_width // 2, internal_height // 2 - 15)))
-
-    subtitle_text = font_subtitle.render("Pressione ESPAÇO para reiniciar...", True, player_color)
-    surface.blit(subtitle_text, subtitle_text.get_rect(center=(internal_width // 2, internal_height // 2 + 15)))
+    surface.blit(fundo_gameover, (0, 0))
+    surface.blit(btn_tentar, rect_tentar)
 
     if pygame.key.get_pressed()[K_SPACE]:
         player = Player(player_starter_x, player_starter_y)

@@ -1,4 +1,5 @@
 import pygame
+import math
 from pygame.locals import *
 from classes.gameobject import *
 from classes.movable import *
@@ -13,17 +14,21 @@ from level import *
 from game_phases.gamerunning import *
 
 pygame.init()
-font_title = pygame.font.SysFont(None, 24)
-font_subtitle = pygame.font.SysFont(None, 22)
+
+# ── Carrega fora da função para não recarregar a cada frame ──
+fundo         = pygame.transform.scale(pygame.image.load('bg-menu.png'), (320, 180))
+botao_base    = pygame.transform.scale(pygame.image.load('botao1.png'), (87, 23))
 
 def gamestart(surface, player, enemies, death, platforms, shots, game_manager, flag):
-    surface.fill((0,0,0))
 
-    title_text = font_title.render("WEGLOW: A Ascensão de Virgínia", True, background_color)
-    surface.blit(title_text, title_text.get_rect(center=(internal_width // 2, internal_height // 2 - 15)))
+    # Fundo escalado para 320x180
+    surface.blit(fundo, (0, 0))
 
-    subtitle_text = font_subtitle.render("Pressione ESPAÇO para começar!", True, player_color)
-    surface.blit(subtitle_text, subtitle_text.get_rect(center=(internal_width // 2, internal_height // 2 + 15)))
+    # Botão pulsante — coordenadas em 320x180
+    escala = 1.0 + math.sin(pygame.time.get_ticks() * 0.005) * 0.08
+    botao_pulsante = pygame.transform.scale(botao_base, (int(87 * escala), int(23 * escala)))
+    rect_pulsante  = botao_pulsante.get_rect(center=(160, 128))  # ← centro da surface
+    surface.blit(botao_pulsante, rect_pulsante)
 
     if pygame.key.get_pressed()[K_SPACE]:
         death, platforms, enemies, flag = create_level()
