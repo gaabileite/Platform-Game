@@ -7,9 +7,8 @@ class GameManager:
                 2: 'Zé Felipe',
                 3: 'Vini Jr.',
                 4: 'Phase Transition',
-                5: 'Collectable Check',
-                6: 'Game Over',
-                7: 'Victory'
+                5: 'Game Over',
+                6: 'Victory'
             }
 
     # Verifica se o jogador atingiu os requisitos para avançar para a próxima fase

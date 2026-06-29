@@ -36,4 +36,4 @@ def create_level():
     #Criação da bandeira no final do nível
     flag = Flag(LEVEL_WIDTH - 40, 140)
 
-    return death, platforms, enemies, flag
+    return death, platforms, enemies, flag, []
