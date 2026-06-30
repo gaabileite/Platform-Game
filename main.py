@@ -46,7 +46,7 @@ clock = pygame.time.Clock()
 #Instanciação do GameManager e criação dos objetos do jogo
 game_manager = GameManager()
 camera = Camera(LEVEL_WIDTH)
-player = Player(player_starter_x, player_starter_y, SPRITES["virginia"])
+player = Player(player_starter_x, player_starter_y, SPRITES["virginia direita"])
 death, platforms, enemies, flag = create_level()
 shots = []
 
