@@ -6,9 +6,8 @@ from classes.shot import *
 
 class Player(Movable):
     def __init__(self, x, y, animations):
-        super().__init__(x, y, animations['idle']['right'][0], player_life, player_speed, player_boost, player_size, player_size)
+        super().__init__(x, y, animations['idle']['right'][0], player_life, player_speed, player_boost, player_size, player_size, animations)
 
-        self.animations = animations
         self.follower_count = 0
         self.shot_count = 0
         self.story_count = 0
@@ -16,13 +15,17 @@ class Player(Movable):
         self.just_shot = False
 
     def handle_movement(self):
+        self.moving = False
+                
         if pygame.key.get_pressed()[K_d]:
             self.move('right')
             self.facing = 'right'
+            self.moving = True
 
         if pygame.key.get_pressed()[K_a]:
             self.move('left')
             self.facing = 'left'
+            self.moving = True
 
         if pygame.key.get_pressed()[K_SPACE]:
             self.move('jump')
