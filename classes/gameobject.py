@@ -8,6 +8,3 @@ class GameObject:
     def __init__(self, x, y, image, width, height):
         self.rect = pygame.Rect(x, y, width, height)
         self.image = image
-
-    def draw(self):
-        screen.blit(self.image, self.rect)

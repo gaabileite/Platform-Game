@@ -12,6 +12,12 @@ from constants import *
 from level import *
 from game_phases.gamerunning import *
 
+backgrounds = {
+    1 : pygame.transform.smoothscale(pygame.image.load('backgrounds/bg-phase1.png'), (320, 180)),
+    2 : pygame.transform.smoothscale(pygame.image.load('backgrounds/bg-phase2.png'), (320, 180)),
+    3 : pygame.transform.smoothscale(pygame.image.load('backgrounds/bg-phase3.png'), (320, 180))
+}
+
 def game_running(player, enemies, death, platforms, shots, camera, surface, game_manager, flag):
     last_phase = game_manager.current_phase
 
@@ -33,6 +39,7 @@ def game_running(player, enemies, death, platforms, shots, camera, surface, game
 
     # --- desenho ---
     surface.fill(background_color)
+    surface.blit(backgrounds[game_manager.current_phase], (0,0))
     surface.blit(player.image, camera.apply(player))
 
     for enemy in enemies:
