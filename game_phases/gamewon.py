@@ -10,8 +10,8 @@ from classes.platform import *
 from classes.collectable import *
 from classes.camera import *
 from constants import *
-from w.level import *
-from game_phases.w.gamerunning import *
+from level import *
+from game_phases.gamerunning import *
 
 pygame.init()
 

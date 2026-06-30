@@ -5,8 +5,8 @@ from classes.movable import *
 from classes.shot import *
 
 class Player(Movable):
-    def __init__(self, x, y):
-        super().__init__(x, y, player_color, player_life, player_speed, player_boost, player_size, player_size)
+    def __init__(self, x, y, image):
+        super().__init__(x, y, image, player_life, player_speed, player_boost, player_size, player_size)
 
         self.follower_count = 0
         self.shot_count = 0

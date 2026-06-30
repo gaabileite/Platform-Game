@@ -2,8 +2,9 @@ from constants import *
 from classes.movable import *
 
 class Enemy(Movable):
-    def __init__(self, x, y):
-        super().__init__(x, y, enemy_color, enemy_life, enemy_speed, enemy_boost, enemy_size, enemy_size)
+    def __init__(self, x, y, image, type):
+        super().__init__(x, y, image, enemy_life, enemy_speed, enemy_boost, enemy_size, enemy_size)
+        self.type = type
 
     def follow_player(self, player):
         if self.x < player.x:

@@ -2,6 +2,7 @@ from classes.platform import Platform
 from classes.enemy import Enemy
 from constants import *
 from classes.flag import *
+from main import SPRITES
 
 REPEAT_DISTANCE = 320
 REPEAT_COUNT = 5
@@ -14,7 +15,7 @@ def create_level():
         Platform(0, 160, LEVEL_WIDTH, 20),
     ]
 
-    #Padrão de spawn de plataformas e inimigos, repetido ao longo do nível
+    #SPAWN PATTERN (WIP/BACK)
     platform_pattern = [
         (100, 100, 60, 10),
         (200, 80, 60, 10),
@@ -29,11 +30,15 @@ def create_level():
     enemies = []
     for i in range(REPEAT_COUNT):
         for (x, y, largura, altura) in platform_pattern:
-            platforms.append(Platform(x + i * REPEAT_DISTANCE, y, largura, altura))
+            platforms.append(Platform(x + i * REPEAT_DISTANCE, y, largura, altura, SPRITES['platforma']))
         for (x, y) in enemy_pattern:
             enemies.append(Enemy(x + i * REPEAT_DISTANCE, y))
 
     #Criação da bandeira no final do nível
-    flag = Flag(LEVEL_WIDTH - 40, 140)
+    flag = {
+        1 : Flag(LEVEL_WIDTH - 40, 140, SPRITES['flag fase 1']),
+        2 : Flag(LEVEL_WIDTH - 40, 140, SPRITES['flag fase 2']),
+        3 : Flag(LEVEL_WIDTH - 40, 140, SPRITES['flag fase 3'])
+    }
 
     return death, platforms, enemies, flag, []

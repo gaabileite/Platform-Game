@@ -2,8 +2,8 @@ from constants import *
 from classes.gameobject import *
     
 class Movable(GameObject):
-    def __init__(self, x, y, color, life, speed, boost, width, height):
-        super().__init__(x, y, color, width, height)
+    def __init__(self, x, y, image, life, speed, boost, width, height):
+        super().__init__(x, y, image, width, height)
 
         self.speed = speed
         self.boost = boost
