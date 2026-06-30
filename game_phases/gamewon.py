@@ -13,16 +13,22 @@ from level import *
 from game_phases.gamerunning import *
 
 pygame.init()
-font_title = pygame.font.SysFont(None, 24)
-font_subtitle = pygame.font.SysFont(None, 22)
+
+#imagens de fundo e botão
+fundo_vitoria  = pygame.transform.scale(pygame.image.load('bg_gamewin.png'), (320, 180))
+btn_jogar      = pygame.transform.scale(pygame.image.load('btn-tentar-novamente.png'), (90, 90))
+
+
+fundo_vitoria = pygame.transform.scale(fundo_vitoria, (960, 540))
+
+#botao
+rect_jogar = btn_jogar.get_rect(center=(480, 340))
+
 
 def gamewon(surface, player, enemies, death, platforms, shots, game_manager, flag):
-    surface.fill((0,0,0))
-    title_text = font_title.render("PARABÉNS! VOCÊ VENCEU!", True, background_color)
-    surface.blit(title_text, title_text.get_rect(center=(internal_width // 2, internal_height // 2 - 15)))
-
-    subtitle_text = font_subtitle.render("Pressione ESPAÇO para reiniciar...", True, player_color)
-    surface.blit(subtitle_text, subtitle_text.get_rect(center=(internal_width // 2, internal_height // 2 + 15)))
+    surface.blit(fundo_vitoria, (0, 0))
+    surface.blit(btn_jogar, rect_jogar)
+    
 
     if pygame.key.get_pressed()[K_SPACE]:
         player = Player(player_starter_x, player_starter_y)

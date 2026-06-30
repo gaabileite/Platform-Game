@@ -16,6 +16,7 @@ from game_phases.gamerunning import *
 from game_phases.gameover import *
 from game_phases.gamestart import *
 from game_phases.gamewon import *
+from hud import desenhar_hud
 
 # Definições iniciais padrão do Pygame e criação da janela
 pygame.init()
@@ -50,6 +51,7 @@ while True:
     #GAME RUNNING: PHASE 1
     elif game_manager.current_phase == 1:
         game_manager = game_running(player, enemies, death, platforms, shots, camera, surface, game_manager, flag)
+        desenhar_hud(surface, player)
 
     #GAME OVER
     elif game_manager.current_phase == 6:
