@@ -68,3 +68,4 @@ class Player(Movable):
     def update(self, platforms):
         self.apply_gravity()
         self.check_platform_collision(platforms)
+        self.update_animation()

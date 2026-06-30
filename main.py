@@ -41,7 +41,7 @@ while True:
 
     #GAME START (OK)
     if game_manager.current_phase == 0:
-        player, enemies, death, platforms, shots, game_manager, flag = gamestart(surface, player, enemies, death, platforms, shots, game_manager, flag)
+        player, enemies, death, platforms, shots, game_manager, flag, shots = gamestart(surface, player, enemies, death, platforms, shots, game_manager, flag)
 
     #GAME RUNNING: PHASE 1, 2, 3 (WIP/BACK)
     elif game_manager.current_phase in [1,2,3]:
@@ -49,11 +49,11 @@ while True:
 
     #PHASE TRANSITION (WIP/FRONT)
     elif game_manager.current_phase == 4:
-        player, enemies, death, platforms, shots, game_manager, flag = phase_transition(surface, player, enemies, death, platforms, shots, game_manager, flag, last_phase)
+        player, enemies, death, platforms, shots, game_manager, flag, shots = phase_transition(surface, player, enemies, death, platforms, shots, game_manager, flag, last_phase)
 
     #GAME OVER (OK)
     elif game_manager.current_phase == 5:
-        player, enemies, death, platforms, shots, game_manager, flag = gameover(surface, player, enemies, death, platforms, shots, game_manager, flag)
+        player, enemies, death, platforms, shots, game_manager, flag, shots = gameover(surface, player, enemies, death, platforms, shots, game_manager, flag)
     
     #GAME WON (OK)
     elif game_manager.current_phase == 6:
