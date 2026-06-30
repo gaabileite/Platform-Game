@@ -17,24 +17,7 @@ from game_phases.gameover import *
 from game_phases.gamestart import *
 from game_phases.gamewon import *
 from game_phases.transition import *
-
-#WIP
-SPRITES = {
-    'virginia direita' : pygame.transform.scale(pygame.image.load("assets/virginia/idle/virginia R.png").convert_alpha(), (40, 60)),
-    'virginia esquerda' : pygame.transform.scale(pygame.image.load("assets/virginia/idle/virginia L.png").convert_alpha(), (40, 60)),
-    'seguidor' : pygame.image.load("assets/collectables/seguidor.png").convert_alpha(),
-    'base' : pygame.image.load("assets/collectables/base-productplataforma.png").convert_alpha(),
-    'perfume' : pygame.image.load("assets/collectables/perfume-product.png").convert_alpha(),
-    'bodysplash' : pygame.image.load("assets/body-splash-product.png").convert_alpha(),
-    #'flag fase 1' : pygame.image.load("assets/flag1.png").convert_alpha(),
-    #'flag fase 2' : pygame.image.load("assets/flag2.png").convert_alpha(),
-    #'flag fase 3' : pygame.image.load("assets/flag3.png").convert_alpha(),
-    #'hater' : pygame.image.load("assets/hater.png").convert_alpha(),
-    'felca' : pygame.image.load("assets/enemies/felca.png").convert_alpha(),
-    'felca dano' : pygame.image.load("assets/enemies/felca_dano.png").convert_alpha(),
-    'plataforma' : pygame.image.load("assets/plataformas/plataforma.png").convert_alpha(),
-    'chao' : pygame.image.load("assets/plataformas/chao.png").convert_alpha(),
-}
+from sprites import *
 
 #Definições iniciais padrão do Pygame e criação da janela
 pygame.init()
@@ -46,7 +29,7 @@ clock = pygame.time.Clock()
 #Instanciação do GameManager e criação dos objetos do jogo
 game_manager = GameManager()
 camera = Camera(LEVEL_WIDTH)
-player = Player(player_starter_x, player_starter_y, SPRITES["virginia direita"])
+player = Player(player_starter_x, player_starter_y, ANIMATIONS_V)
 death, platforms, enemies, flag = create_level()
 shots = []
 

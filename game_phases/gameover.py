@@ -15,8 +15,8 @@ from game_phases.gamerunning import *
 
 pygame.init()
 
-bg_gameover = pygame.transform.smoothscale(pygame.image.load('bg-gameover.png'), (320, 180))
-btn_tryagain = pygame.transform.smoothscale(pygame.image.load('btn-tentar-novamente.png'), (90, 90))
+bg_gameover = pygame.transform.smoothscale(pygame.image.load('assets/backgrounds/bg-gameover.png'), (320, 180))
+btn_tryagain = pygame.transform.smoothscale(pygame.image.load('assets/backgrounds/btn-tentar-novamente.png'), (90, 90))
 
 bg_gameover = pygame.transform.smoothscale(bg_gameover, (320, 180))
 rect_tryagain = btn_tryagain.get_rect(center=(160, 128))

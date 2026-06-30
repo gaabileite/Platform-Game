@@ -15,8 +15,8 @@ from game_phases.gamerunning import *
 
 pygame.init()
 
-bg_gamewon = pygame.transform.scale(pygame.image.load('bg-vitoria.png'), (320, 180))
-btn_playagain = pygame.transform.scale(pygame.image.load('btn-tentar-novamente.png'), (87, 23))
+bg_gamewon = pygame.transform.scale(pygame.image.load('assets/backgrounds/bg-vitoria.png'), (320, 180))
+btn_playagain = pygame.transform.scale(pygame.image.load('assets/backgrounds/btn-tentar-novamente.png'), (87, 23))
 
 def gamewon(surface, player, enemies, death, platforms, shots, game_manager, flag):
 

@@ -13,9 +13,9 @@ from level import *
 from game_phases.gamerunning import *
 
 backgrounds = {
-    1 : pygame.transform.smoothscale(pygame.image.load('backgrounds/bg-phase1.png'), (320, 180)),
-    2 : pygame.transform.smoothscale(pygame.image.load('backgrounds/bg-phase2.png'), (320, 180)),
-    3 : pygame.transform.smoothscale(pygame.image.load('backgrounds/bg-phase3.png'), (320, 180))
+    1 : pygame.transform.smoothscale(pygame.image.load('assets/backgrounds/bg-phase1.png'), (320, 180)),
+    2 : pygame.transform.smoothscale(pygame.image.load('assets/backgrounds/bg-phase2.png'), (320, 180)),
+    3 : pygame.transform.smoothscale(pygame.image.load('assets/backgrounds/bg-phase3.png'), (320, 180))
 }
 
 def game_running(player, enemies, death, platforms, shots, camera, surface, game_manager, flag):

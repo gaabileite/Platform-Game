@@ -5,9 +5,10 @@ from classes.movable import *
 from classes.shot import *
 
 class Player(Movable):
-    def __init__(self, x, y, image):
-        super().__init__(x, y, image, player_life, player_speed, player_boost, player_size, player_size)
+    def __init__(self, x, y, animations):
+        super().__init__(x, y, animations['idle']['right'][0], player_life, player_speed, player_boost, player_size, player_size)
 
+        self.animations = animations
         self.follower_count = 0
         self.shot_count = 0
         self.story_count = 0

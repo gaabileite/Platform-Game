@@ -17,8 +17,8 @@ pygame.init()
 
 #WIP(FRONT)
 bg_transition = {
-    1 : pygame.transform.scale(pygame.image.load('backgrounds/bg-transicao1.png'), (320, 180)),
-    2 : pygame.transform.scale(pygame.image.load('backgrounds/bg-transicao2.png'), (320, 180))
+    1 : pygame.transform.scale(pygame.image.load('assets/backgrounds/bg-transicao1.png'), (320, 180)),
+    2 : pygame.transform.scale(pygame.image.load('assets/backgrounds/bg-transicao2.png'), (320, 180))
 }
 btn_keepgoing = pygame.transform.scale(pygame.image.load('---.png'), (87, 23))
 
