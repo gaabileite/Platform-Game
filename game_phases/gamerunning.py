@@ -55,7 +55,7 @@ def game_running(player, enemies, death, platforms, shots, camera, surface, game
     shots_used = []
     for enemy in enemies:
         if player.check_collision(enemy):
-            player.life -= 1
+            player.take_contact_damage()
 
         for shot in shots:
             if shot.check_collision(enemy):

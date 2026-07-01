@@ -13,6 +13,7 @@ class Player(Movable):
         self.story_count = 0
         self.facing = 'right'
         self.just_shot = False
+        self.damage_cooldown = 0
 
     def handle_movement(self):
         self.moving = False
@@ -65,7 +66,14 @@ class Player(Movable):
 
         return Shot(self.x + self.width // 2, self.y + self.height // 2, self.facing)
     
+    def take_contact_damage(self):
+        if self.damage_cooldown == 0:
+            self.life -= 1
+            self.damage_cooldown = 90
+
     def update(self, platforms):
+        if self.damage_cooldown > 0:
+            self.damage_cooldown -= 1
         self.apply_gravity()
         self.check_platform_collision(platforms)
         self.update_animation()
