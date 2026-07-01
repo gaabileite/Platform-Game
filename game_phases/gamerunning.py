@@ -67,7 +67,7 @@ def game_running(player, enemies, death, platforms, shots, camera, surface, game
             enemy_dead.append(enemy)
 
     if player.life <= 0:
-        game_manager.current_phase = 6
+        game_manager.current_phase = 5
         return game_manager, last_phase
 
     # --- remover inimigos mortos e tiros já usados ---
@@ -88,7 +88,7 @@ def game_running(player, enemies, death, platforms, shots, camera, surface, game
 
     # --- morte por queda ou por zona de morte ---
     if player.check_collision(death) or player.y > internal_height:
-        game_manager.current_phase = 6
+        game_manager.current_phase = 5
         return game_manager, last_phase
 
     return game_manager, last_phase
