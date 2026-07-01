@@ -74,6 +74,7 @@ def game_running(player, enemies, death, platforms, shots, camera, surface, game
     for coletavel in coletaveis[:]:
         if player.check_collision(coletavel):
             player.add_collectable(coletavel)
+            coletaveis.remove(coletavel)
 
     # --- remover inimigos mortos e tiros já usados ---
     for enemy in enemy_dead:

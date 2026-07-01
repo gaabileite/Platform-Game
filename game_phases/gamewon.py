@@ -19,7 +19,7 @@ bg_gamewon = pygame.transform.scale(pygame.image.load('assets/backgrounds/bg_gam
 btn_playagain = pygame.transform.scale(pygame.image.load('assets/backgrounds/btn-tentar-novamente.png'), (87, 23))
 
 def gamewon(surface, player, enemies, death, platforms, shots, game_manager, flag, camera):
-
+    coletaveis = []
     surface.blit(bg_gamewon, (0, 0))
     
     escala = 1.0 + math.sin(pygame.time.get_ticks() * 0.005) * 0.08

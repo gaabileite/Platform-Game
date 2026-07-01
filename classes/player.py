@@ -3,10 +3,11 @@ from pygame.locals import *
 from constants import *
 from classes.movable import *
 from classes.shot import *
+from sprites import *
 
 class Player(Movable):
     def __init__(self, x, y, animations):
-        super().__init__(x, y, animations['idle']['right'][0], player_life, player_speed, player_boost, player_size, player_size, animations)
+        super().__init__(x, y, animations['idle']['right'][0], player_life, player_speed, player_boost, 50, 60, animations)
 
         self.follower_count = 0
         self.shot_count = 0

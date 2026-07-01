@@ -12,7 +12,7 @@ class GameObject:
         self.height = height
 
         self.rect = pygame.Rect(x, y, width, height)
-        self.image = image
+        self.image = pygame.transform.scale(image, (width, height))
 
     def get_rect(self):
         return pygame.Rect(self.x, self.y, self.width, self.height)

@@ -4,7 +4,7 @@ import random
 
 class Enemy(Movable):
     def __init__(self, x, y, image, type, animations):
-        super().__init__(x, y, image, enemy_life, enemy_speed, enemy_boost, enemy_size, enemy_size, animations)
+        super().__init__(x, y, image, enemy_life, enemy_speed, enemy_boost, 28, 48, animations)
         self.type = type
         self.steal_timer = 0
 

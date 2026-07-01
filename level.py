@@ -41,7 +41,7 @@ def create_level(phase):
 
         for (x, y) in collectable_pattern:
             tipo = pick_collectable_type()
-            collectables.append(Collectable(x + i * REPEAT_DISTANCE, y, SPRITES.get(tipo, SPRITES['seguidor']), tipo))
+            collectables.append(Collectable(x + i * REPEAT_DISTANCE, y, SPRITES.get(tipo, SPRITES['SEGUIDOR']), tipo))
 
     #Criação da bandeira no final do nível
     flag = {

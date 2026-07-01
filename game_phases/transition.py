@@ -23,6 +23,7 @@ bg_transition = {
 btn_keepgoing = pygame.transform.scale(pygame.image.load('assets/backgrounds/btn-jogar.png'), (87, 23))
 
 def phase_transition(surface, player, enemies, death, platforms, shots, game_manager, flag, last_phase, camera):
+    coletaveis = []
     surface.blit(bg_transition[last_phase], (0, 0))
 
     if pygame.key.get_pressed()[K_SPACE] and last_phase == 1:
