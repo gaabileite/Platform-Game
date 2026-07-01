@@ -26,6 +26,7 @@ enemy_life = 2
 enemy_speed = 1
 enemy_boost = 1
 persuit_range = 100
+felca_pursuit_range = 200
 enemy_size = 10
 
 #BULLET INFO
@@ -34,7 +35,7 @@ shot_speed = 3
 shot_size = 5
 
 #COLLECTABLE INFO
-collectable_size = 5
+collectable_size = 12
 
 #FLAG INFO
 flag_color = (255,0,0)

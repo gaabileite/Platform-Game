@@ -1,42 +1,48 @@
+import random
 from classes.platform import Platform
 from classes.enemy import Enemy
-from constants import *
+from classes.collectable import *
 from classes.flag import *
+from constants import *
+from sprites import *
 
 REPEAT_DISTANCE = 320
 REPEAT_COUNT = 5
 LEVEL_WIDTH = REPEAT_DISTANCE * REPEAT_COUNT
 
-def create_level():
-    death = Platform(0, 180, LEVEL_WIDTH, 20)
+def create_level(phase=1):
+    death     = Platform(0, 180, LEVEL_WIDTH, 20, SPRITES['chao'])
+    platforms = [Platform(0, 160, LEVEL_WIDTH, 20, SPRITES['chao'])]
 
-    platforms = [
-        Platform(0, 160, 400, 20),
-        Platform(420, 160, 120, 20),
-        Platform(580, 160, 400, 20),
-        Platform(1000, 160, LEVEL_WIDTH - 1000, 20),
-    ]
-
-    # Padrão de spawn de plataformas e inimigos, repetido ao longo do nível
     platform_pattern = [
         (100, 100, 60, 10),
-        (200, 80, 60, 10),
-        (300, 60, 60, 10),
+        (200, 80,  60, 10),
+        (300, 60,  60, 10),
     ]
 
-    enemy_pattern = [
-        (300, 100)
-    ]
+    enemy_pattern = [(300, 100)]
 
-    # Criação de loop de acordo com a REPEAT_COUNT para preencher o nível com plataformas e inimigos
-    enemies = []
+    enemies          = []
+    collectables_data = []
+
     for i in range(REPEAT_COUNT):
         for (x, y, largura, altura) in platform_pattern:
-            platforms.append(Platform(x + i * REPEAT_DISTANCE, y, largura, altura))
+            platforms.append(Platform(x + i * REPEAT_DISTANCE, y, largura, altura, SPRITES['plataforma']))
+
         for (x, y) in enemy_pattern:
-            enemies.append(Enemy(x + i * REPEAT_DISTANCE, y))
+            if random.random() < 0.5:
+                e = Enemy(x + i * REPEAT_DISTANCE, y, ANIMATIONS_F['idle'][0], 'Felca', ANIMATIONS_F)
+            else:
+                e = Enemy(x + i * REPEAT_DISTANCE, y, ANIMATIONS_F['idle'][0], 'Ana Castela', ANIMATIONS_A)
+            enemies.append(e)
 
-    # Criação da bandeira no final do nível
-    flag = Flag(LEVEL_WIDTH - 20, 180)
+        for (x, y) in COLLECTABLE_PATTERNS[phase]:
+            collectables_data.append((x + i * REPEAT_DISTANCE, y, pick_type()))
 
-    return death, platforms, enemies, flag
+    flag = {
+        1 : Flag(LEVEL_WIDTH - 40, 140, SPRITES['flag fase 1']),
+        2 : Flag(LEVEL_WIDTH - 40, 140, SPRITES['flag fase 2']),
+        3 : Flag(LEVEL_WIDTH - 40, 140, SPRITES['flag fase 3'])
+    }
+
+    return death, platforms, enemies, collectables_data, flag

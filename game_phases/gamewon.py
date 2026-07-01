@@ -1,4 +1,5 @@
 import pygame
+import math
 from pygame.locals import *
 from classes.gameobject import *
 from classes.movable import *
@@ -10,24 +11,26 @@ from classes.collectable import *
 from classes.camera import *
 from constants import *
 from level import *
+from game_phases.gamerunning import *
+
 pygame.init()
-font_title = pygame.font.SysFont(None, 24)
-font_subtitle = pygame.font.SysFont(None, 22)
 
-def gamewon(surface, player, enemies, death, platforms, shots, state, flag):
-    surface.fill((0,0,0))
-    title_text = font_title.render("PARABÉNS! VOCÊ VENCEU!", True, background_color)
-    surface.blit(title_text, title_text.get_rect(center=(internal_width // 2, internal_height // 2 - 15)))
+bg_gamewon = pygame.transform.scale(pygame.image.load('assets/backgrounds/bg-vitoria.png'), (320, 180))
+btn_playagain = pygame.transform.scale(pygame.image.load('assets/backgrounds/btn-tentar-novamente.png'), (87, 23))
 
-    subtitle_text = font_subtitle.render("Pressione ESPAÇO para reiniciar...", True, player_color)
-    surface.blit(subtitle_text, subtitle_text.get_rect(center=(internal_width // 2, internal_height // 2 + 15)))
+def gamewon(surface, player, enemies, death, platforms, collectables, shots, game_manager, flag):
+
+    surface.blit(bg_gamewon, (0, 0))
+
+    escala = 1.0 + math.sin(pygame.time.get_ticks() * 0.005) * 0.08
+    btn_pulsante = pygame.transform.scale(btn_playagain, (int(87 * escala), int(23 * escala)))
+    rect_pulsante  = btn_pulsante.get_rect(center=(160, 128))
+    surface.blit(btn_pulsante, rect_pulsante)
 
     if pygame.key.get_pressed()[K_SPACE]:
-        player = Player(player_starter_x, player_starter_y)
-        enemies = [
-            Enemy(300, 100)]
-        death, platforms, enemies, flag = create_level()
+        game_manager.current_phase = 1
+        death, platforms, enemies, collectables_data, flag = create_level(1)
+        collectables = make_collectables(collectables_data)
         shots = []
-        state = 'game-running'
 
-    return player, enemies, death, platforms, shots, state, flag
+    return player, enemies, death, platforms, collectables, shots, game_manager, flag

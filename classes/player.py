@@ -5,8 +5,8 @@ from classes.movable import *
 from classes.shot import *
 
 class Player(Movable):
-    def __init__(self, x, y):
-        super().__init__(x, y, player_color, player_life, player_speed, player_boost, player_size, player_size)
+    def __init__(self, x, y, animations):
+        super().__init__(x, y, animations['idle']['right'][0], player_life, player_speed, player_boost, player_size, player_size, animations)
 
         self.follower_count = 0
         self.shot_count = 0
@@ -15,13 +15,17 @@ class Player(Movable):
         self.just_shot = False
 
     def handle_movement(self):
+        self.moving = False
+                
         if pygame.key.get_pressed()[K_d]:
             self.move('right')
             self.facing = 'right'
+            self.moving = True
 
         if pygame.key.get_pressed()[K_a]:
             self.move('left')
             self.facing = 'left'
+            self.moving = True
 
         if pygame.key.get_pressed()[K_SPACE]:
             self.move('jump')
@@ -37,16 +41,16 @@ class Player(Movable):
                 else:
                     self.follower_count += 50
 
-        elif self.check_collision(collectable) and collectable.type == 'follower':
+        elif self.check_collision(collectable) and collectable.type == 'seguidor':
             self.follower_count += 10
 
-        elif self.check_collision(collectable) and collectable.type == 'bad product':
+        elif self.check_collision(collectable) and collectable.type == 'base':
             self.shot_count -= 1
 
-        elif self.check_collision(collectable) and collectable.type == 'neutral product':
+        elif self.check_collision(collectable) and collectable.type == 'bodysplash':
             self.shot_count += 1
 
-        elif self.check_collision(collectable) and collectable.type == 'good product':
+        elif self.check_collision(collectable) and collectable.type == 'perfume':
             self.shot_count += 3
 
     def shoot(self):
@@ -64,3 +68,4 @@ class Player(Movable):
     def update(self, platforms):
         self.apply_gravity()
         self.check_platform_collision(platforms)
+        self.update_animation()

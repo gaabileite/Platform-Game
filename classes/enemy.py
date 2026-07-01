@@ -1,23 +1,48 @@
+import random
 from constants import *
 from classes.movable import *
 
 class Enemy(Movable):
-    def __init__(self, x, y):
-        super().__init__(x, y, enemy_color, enemy_life, enemy_speed, enemy_boost, enemy_size, enemy_size)
+    def __init__(self, x, y, image, type, animations):
+        super().__init__(x, y, image, enemy_life, enemy_speed, enemy_boost, enemy_size, enemy_size, animations)
+        self.type = type
+        self.steal_timer = 0
 
     def follow_player(self, player):
-        if self.x < player.x:
-            self.move('right')
+        distance = self.get_distance(player)
 
-        if self.x > player.x:
-            self.move('left')
-            
+        if self.type == 'Felca':
+            if distance <= felca_pursuit_range:
+                if self.x < player.x:
+                    self.move('right')
+                    self.facing = 'right'
+                elif self.x > player.x:
+                    self.move('left')
+                    self.facing = 'left'
+
+                self.steal_timer += 1
+                if self.steal_timer >= 60:
+                    steal = random.randint(3000, 5000)
+                    player.follower_count = max(0, player.follower_count - steal)
+                    self.steal_timer = 0
+            else:
+                self.steal_timer = 0
+
+        else:  # Hater (Ana Castela) — raio menor, perseguição direta
+            if distance <= persuit_range:
+                if self.x < player.x:
+                    self.move('right')
+                    self.facing = 'right'
+                elif self.x > player.x:
+                    self.move('left')
+                    self.facing = 'left'
+
     def get_shot(self, bullet):
         self.take_damage(bullet)
 
     def get_distance(self, player):
         return abs(self.x - player.x)
-    
+
     def update(self, platforms, player):
         self.follow_player(player)
         self.apply_gravity()
