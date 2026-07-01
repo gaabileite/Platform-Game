@@ -37,7 +37,7 @@ def create_level(phase):
 
         for (x, y, tipo) in enemy_pattern:
             animacoes = ANIMATIONS_F if tipo == 'FELCA' else ANIMATIONS_A
-            enemies.append(Enemy(x + i * REPEAT_DISTANCE, y, animacoes['idle'][0], tipo, animacoes))
+            enemies.append(Enemy(x + i * REPEAT_DISTANCE, y, animacoes['idle']['right'][0], tipo, animacoes))
 
         for (x, y) in collectable_pattern:
             tipo = pick_collectable_type()

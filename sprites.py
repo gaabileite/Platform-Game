@@ -39,18 +39,24 @@ ANIMATIONS_V = {
 }
 
 ANIMATIONS_F = {
-    'idle': load_frames([f"assets/front_inimigos/felca/cara do felca.png"]),
-    'dano': load_frames([f"assets/front_inimigos/felca/felca_dano.png"])
+    'idle': {
+        'right': load_frames([f"assets/front_inimigos/felca/cara do felca.png"]),
+        'left': load_frames([f"assets/front_inimigos/felca/cara do felca.png"])
+    },
+    'dano': {
+        'right': load_frames([f"assets/front_inimigos/felca/felca_dano.png"]),
+        'left': load_frames([f"assets/front_inimigos/felca/felca_dano.png"])
+    },
 }
 
 ANIMATIONS_A = {
     'idle': {
-        'right': load_frames([f"assets/front_inimigos/ana castela/acastela_idleR#{i}.png" for i in range(1, 3)]),
-        'left': load_frames([f"assets/front_inimigos/ana castela/acastela_idleL#{i}.png" for i in range(1, 3)])
+        'right': load_frames([f"assets/front_inimigos/ana castela/acastela_idle/acastela_idleR#{i}.png" for i in range(1, 3)]),
+        'left': load_frames([f"assets/front_inimigos/ana castela/acastela_idle/acastela_idleL#{i}.png" for i in range(1, 3)])
     },
     'chase': {
-        'right': load_frames([f"assets/front_inimigos/ana castela/acastela_chase_direita#{i}.png" for i in range(1, 4)]),
-        'left': load_frames([f"assets/front_inimigos/ana castela/acastela_chase_esquerda#{i}.png" for i in range(1, 4)])
+        'right': load_frames([f"assets/front_inimigos/ana castela/acastela_chase/acastela_chase_direita#{i}.png" for i in range(1, 4)]),
+        'left': load_frames([f"assets/front_inimigos/ana castela/acastela_chase/acastela_chase_esquerda#{i}.png" for i in range(1, 4)])
     }
 }
 
