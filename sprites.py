@@ -44,9 +44,14 @@ ANIMATIONS_F = {
 }
 
 ANIMATIONS_A = {
-
+    'idle': {
+        'right': load_frames([f"assets/front_inimigos/ana castela/acastela_idleR#{i}.png" for i in range(1, 3)]),
+        'left': load_frames([f"assets/front_inimigos/ana castela/acastela_idleL#{i}.png" for i in range(1, 3)])
+    },
+    'chase': {
+        'right': load_frames([f"assets/front_inimigos/ana castela/acastela_chase_direita#{i}.png" for i in range(1, 4)]),
+        'left': load_frames([f"assets/front_inimigos/ana castela/acastela_chase_esquerda#{i}.png" for i in range(1, 4)])
+    }
 }
 
-ANIMATIONS_T = {
-
-}
+ANIMATIONS_T = [load_frames([f"assets/tiro/frame-{i}.png" for i in range(1, 4)])]
