@@ -29,6 +29,6 @@ def gamestart(surface, player, enemies, death, platforms, shots, game_manager, f
 
     if pygame.key.get_pressed()[K_SPACE]:
         game_manager.current_phase = 1
-        death, platforms, enemies, flag, shots = create_level()
+        death, platforms, enemies, flag, shots = create_level(game_manager.current_phase)
 
     return player, enemies, death, platforms, shots, game_manager, flag
