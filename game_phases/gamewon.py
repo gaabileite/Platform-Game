@@ -29,6 +29,7 @@ def gamewon(surface, player, enemies, death, platforms, shots, game_manager, fla
 
     if pygame.key.get_pressed()[K_SPACE]:
         game_manager.current_phase = 1
+        player.reset()
         death, platforms, enemies, flag, coletaveis, shots, camera = create_level(game_manager.current_phase)
 
     return player, death, platforms, enemies, flag, coletaveis, shots, camera, game_manager
