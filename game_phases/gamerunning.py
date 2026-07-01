@@ -13,9 +13,9 @@ from level import *
 from game_phases.gamerunning import *
 
 backgrounds = {
-    1 : pygame.transform.smoothscale(pygame.image.load('assets/backgrounds/bg-phase1.png'), (320, 180)),
-    2 : pygame.transform.smoothscale(pygame.image.load('assets/backgrounds/bg-phase2.png'), (320, 180)),
-    3 : pygame.transform.smoothscale(pygame.image.load('assets/backgrounds/bg-phase3.png'), (320, 180))
+    1 : pygame.transform.smoothscale(pygame.image.load('assets/backgrounds/bg-phase1.png'), (960, 540)),
+    2 : pygame.transform.smoothscale(pygame.image.load('assets/backgrounds/bg-phase2.png'), (960, 540)),
+    3 : pygame.transform.smoothscale(pygame.image.load('assets/backgrounds/bg-phase3.png'), (960, 540))
 }
 
 def game_running(player, enemies, death, platforms, shots, camera, surface, game_manager, flag, coletaveis):
@@ -37,8 +37,6 @@ def game_running(player, enemies, death, platforms, shots, camera, surface, game
         if shot.x < 0 or shot.x > internal_width or shot.y < 0 or shot.y > internal_height:
             shots.remove(shot)
 
-    # --- desenho ---
-    surface.fill(background_color)
     surface.blit(backgrounds[game_manager.current_phase], (0,0))
     surface.blit(player.image, camera.apply(player))
 
@@ -46,6 +44,7 @@ def game_running(player, enemies, death, platforms, shots, camera, surface, game
         surface.blit(enemy.image, camera.apply(enemy))
     for platform in platforms:
         surface.blit(platform.image, camera.apply(platform))
+        pygame.draw.rect(surface, (255, 0, 0), camera.apply(platform), 1)
     surface.blit(flag.image, camera.apply(flag))
     for shot in shots:
         surface.blit(shot.image, camera.apply(shot))

@@ -60,8 +60,7 @@ while True:
         player, death, platforms, enemies, flag, coletaveis, shots, camera, game_manager = gamewon(surface, player, enemies, death, platforms, shots, game_manager, flag, camera)
 
     #SCREEN UPDATE 
-    scaled = pygame.transform.scale(surface, (window_width, window_height))
-    screen.blit(scaled, (0, 0))
-    clock.tick(60)
+    screen.blit(surface, (0, 0))
+    clock.tick(40)
 
     pygame.display.update()

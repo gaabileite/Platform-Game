@@ -22,43 +22,39 @@ def load_frames(paths, size=(40, 60)):
 
 ANIMATIONS_V = {
     'idle': {
-        'right': load_frames(["assets/virginia/idle/virginia R.png"]),
-        'left':  load_frames(["assets/virginia/idle/virginia L.png"]),
+        'right': load_frames(["assets/virginia/idle/virginia R.png"], (66, 102)),
+        'left':  load_frames(["assets/virginia/idle/virginia L.png"], (66, 102)),
     },
     'run': {
-        'right': load_frames([f"assets/virginia/virginia_run/run_direita#{i}.png"  for i in range(1, 5)]),
-        'left':  load_frames([f"assets/virginia/virginia_run/run_esquerda#{i}.png" for i in range(1, 5)]),
+        'right': load_frames(["assets/virginia/virginia_run/run_direita#3.png"], (66, 102)),
+        'left':  load_frames(["assets/virginia/virginia_run/run_esquerda#3.png"], (66, 102)),
     },
     'jump': {
-        'right': load_frames([f"assets/virginia/jump/jumpR-frame{i}.png" for i in range(1, 4)]),
-        'left':  load_frames([f"assets/virginia/jump/jumpL-frame{i}.png" for i in range(1, 4)]),
+        'right': load_frames(["assets/virginia/jump/jumpR-frame3.png"], (66, 102)),
+        'left':  load_frames(["assets/virginia/jump/jumpL-frame3.png"], (66, 102)),
     },
     'shoot': {
-        'right': load_frames([f"assets/virginia/shooting/shotR-frame{i}.png" for i in range(1, 4)]),
-        'left':  load_frames([f"assets/virginia/shooting/shotL-frame{i}.png" for i in range(1, 4)]),
+        'right': load_frames(["assets/virginia/shooting/shotR-frame3.png"], (66, 102)),
+        'left':  load_frames(["assets/virginia/shooting/shotL-frame3.png"], (66, 102)),
     }
 }
 
 ANIMATIONS_F = {
     'idle': {
-        'right': load_frames([f"assets/front_inimigos/felca/cara do felca.png"]),
-        'left': load_frames([f"assets/front_inimigos/felca/cara do felca.png"])
-    },
-    'dano': {
-        'right': load_frames([f"assets/front_inimigos/felca/felca_dano.png"]),
-        'left': load_frames([f"assets/front_inimigos/felca/felca_dano.png"])
-    },
+        'right': load_frames([f"assets/front_inimigos/felca/cara do felca.png"], (60, 90)),
+        'left': load_frames([f"assets/front_inimigos/felca/cara do felca.png"], (60, 90))
+    }
 }
 
 ANIMATIONS_A = {
     'idle': {
-        'right': load_frames([f"assets/front_inimigos/ana castela/acastela_idle/acastela_idleR#{i}.png" for i in range(1, 3)]),
-        'left': load_frames([f"assets/front_inimigos/ana castela/acastela_idle/acastela_idleL#{i}.png" for i in range(1, 3)])
+        'right': load_frames([f"assets/front_inimigos/ana castela/acastela_idle/acastela_idleR#1.png"], (60, 90)),
+        'left': load_frames([f"assets/front_inimigos/ana castela/acastela_idle/acastela_idleL#1.png"], (60, 90))
     },
     'chase': {
-        'right': load_frames([f"assets/front_inimigos/ana castela/acastela_chase/acastela_chase_direita#{i}.png" for i in range(1, 4)]),
-        'left': load_frames([f"assets/front_inimigos/ana castela/acastela_chase/acastela_chase_esquerda#{i}.png" for i in range(1, 4)])
+        'right': load_frames([f"assets/front_inimigos/ana castela/acastela_chase/acastela_chase_direita#1.png"], (60, 90)),
+        'left': load_frames([f"assets/front_inimigos/ana castela/acastela_chase/acastela_chase_esquerda#1.png"], (60, 90))
     }
 }
 
-ANIMATIONS_T = [load_frames([f"assets/tiro/frame-{i}.png" for i in range(1, 4)])]
+ANIMATIONS_T = [load_frames([f"assets/tiro/frame-3.png"], (39, 12))]

@@ -8,7 +8,7 @@ class Camera:
         self.level_width = level_width
 
     def follow(self, target):
-        self.x = target.x - internal_width // 2
+        self.x = int(target.x - internal_width // 2)
         self.x = max(0, min(self.x, self.level_width - internal_width))
     
     def apply(self, object):

@@ -8,7 +8,7 @@ from sprites import *
 from spawn import *
 from classes.camera import Camera
 
-REPEAT_DISTANCE = 320
+REPEAT_DISTANCE = 960
 def pick_collectable_type():
     tipo = random.choices(COLLECTABLE_TYPES, weights=COLLECTABLE_WEIGHTS)[0]
     if tipo == 'PRODUTO':
@@ -19,8 +19,8 @@ def create_level(phase):
     repeat_count = LOOPS_PER_ROUND[phase]
     level_width = REPEAT_DISTANCE * repeat_count
 
-    death = Platform(0, 180, level_width, 20, SPRITES['chao'])
-    platforms = [Platform(0, 160, level_width, 20, SPRITES['chao'])]
+    death = Platform(0, 540, level_width, 60, SPRITES['chao'])
+    platforms = [Platform(0, 480, level_width, 60, SPRITES['chao'])]
 
     enemies = []
     collectables = []
@@ -45,9 +45,9 @@ def create_level(phase):
 
     #Criação da bandeira no final do nível
     flag = {
-        1: Flag(level_width - 40, 140, SPRITES['flag fase 1']),
-        2: Flag(level_width - 40, 140, SPRITES['flag fase 2']),
-        3: Flag(level_width - 40, 140, SPRITES['flag fase 3']),
+        1: Flag(level_width - 120, 420, SPRITES['flag fase 1']),
+        2: Flag(level_width - 120, 420, SPRITES['flag fase 2']),
+        3: Flag(level_width - 120, 420, SPRITES['flag fase 3']),
     }
 
     return death, platforms, enemies, flag, collectables, [], Camera(level_width)

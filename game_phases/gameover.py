@@ -16,11 +16,11 @@ from game_phases.gamerunning import *
 
 pygame.init()
 
-bg_gameover = pygame.transform.smoothscale(pygame.image.load('assets/backgrounds/bg_gameover.png'), (320, 180))
-btn_tryagain = pygame.transform.smoothscale(pygame.image.load('assets/backgrounds/btn-tentar-novamente.png'), (90, 90))
+bg_gameover = pygame.transform.smoothscale(pygame.image.load('assets/backgrounds/bg_gameover.png'), (960, 540))
+btn_tryagain = pygame.transform.smoothscale(pygame.image.load('assets/backgrounds/btn-tentar-novamente.png'), (270, 270))
 
-bg_gameover = pygame.transform.smoothscale(bg_gameover, (320, 180))
-rect_tryagain = btn_tryagain.get_rect(center=(160, 128))
+bg_gameover = pygame.transform.smoothscale(bg_gameover, (960, 540))
+rect_tryagain = btn_tryagain.get_rect(center=(480, 384))
 
 def gameover(surface, player, enemies, death, platforms, shots, game_manager, flag, camera):
     coletaveis = []

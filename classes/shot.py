@@ -3,7 +3,7 @@ from classes.movable import *
 
 class Shot(Movable):
     def __init__(self, x, y, direction, image, animations):
-        super().__init__(x, y, image, 0, shot_speed, 0, shot_size, shot_size, animations)
+        super().__init__(x, y, image, 0, shot_speed, 0, 39, 12, animations)
  
         self.direction = direction
     
