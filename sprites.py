@@ -39,8 +39,8 @@ ANIMATIONS_V = {
 }
 
 ANIMATIONS_F = {
-    'idle' : load_frames([f"assets/front_inimigos/felca/cara do felca.png"]),
-    'dano' : load_frames([f"assets/front_inimigos/felca/felca_dano.png"])
+    'idle': load_frames([f"assets/front_inimigos/felca/cara do felca.png"]),
+    'dano': load_frames([f"assets/front_inimigos/felca/felca_dano.png"])
 }
 
 ANIMATIONS_A = {
