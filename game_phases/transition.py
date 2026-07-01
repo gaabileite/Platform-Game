@@ -27,10 +27,10 @@ def phase_transition(surface, player, enemies, death, platforms, shots, game_man
 
     if pygame.key.get_pressed()[K_SPACE] and last_phase == 1:
         game_manager.current_phase = 2
-        death, platforms, enemies, flag, shots, camera = create_level(game_manager.current_phase)
+        death, platforms, enemies, flag, coletaveis, shots, camera = create_level(game_manager.current_phase)
 
     if pygame.key.get_pressed()[K_SPACE] and last_phase == 2:
         game_manager.current_phase = 3
-        death, platforms, enemies, flag, shots, camera = create_level(game_manager.current_phase)
+        death, platforms, enemies, flag, coletaveis, shots, camera = create_level(game_manager.current_phase)
 
-    return player, enemies, death, platforms, shots, game_manager, flag, camera
+    return player, death, platforms, enemies, flag, coletaveis, shots, camera, game_manager

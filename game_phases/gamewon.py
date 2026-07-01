@@ -29,6 +29,6 @@ def gamewon(surface, player, enemies, death, platforms, shots, game_manager, fla
 
     if pygame.key.get_pressed()[K_SPACE]:
         game_manager.current_phase = 1
-        death, platforms, enemies, flag, shots, camera = create_level(game_manager.current_phase)
+        death, platforms, enemies, flag, coletaveis, shots, camera = create_level(game_manager.current_phase)
 
-    return player, enemies, death, platforms, shots, game_manager, flag, camera
+    return player, death, platforms, enemies, flag, coletaveis, shots, camera, game_manager

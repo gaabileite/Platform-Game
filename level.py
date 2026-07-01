@@ -50,4 +50,4 @@ def create_level(phase):
         3: Flag(level_width - 40, 140, SPRITES['flag fase 3']),
     }
 
-    return death, platforms, enemies, flag, collectables, Camera(level_width)
+    return death, platforms, enemies, flag, collectables, [], Camera(level_width)

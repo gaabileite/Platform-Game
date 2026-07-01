@@ -41,7 +41,7 @@ while True:
 
     #GAME START (OK)
     if game_manager.current_phase == 0:
-        player, enemies, death, platforms, shots, game_manager, flag, camera = gamestart(surface, player, enemies, death, platforms, shots, game_manager, flag, camera)
+        player, death, platforms, enemies, flag, coletaveis, shots, camera, game_manager = gamestart(surface, player, enemies, death, platforms, shots, game_manager, flag, camera)
 
     #GAME RUNNING: PHASE 1, 2, 3 (WIP/BACK)
     elif game_manager.current_phase in [1,2,3]:
@@ -49,15 +49,15 @@ while True:
 
     #PHASE TRANSITION (WIP/FRONT)
     elif game_manager.current_phase == 4:
-        player, enemies, death, platforms, shots, game_manager, flag, shots, camera = phase_transition(surface, player, enemies, death, platforms, shots, game_manager, flag, last_phase, camera)
+        player, death, platforms, enemies, flag, coletaveis, shots, camera, game_manager = phase_transition(surface, player, enemies, death, platforms, shots, game_manager, flag, last_phase, camera)
 
     #GAME OVER (OK)
     elif game_manager.current_phase == 5:
-        player, enemies, death, platforms, shots, game_manager, flag, shots, camera = gameover(surface, player, enemies, death, platforms, shots, game_manager, flag, camera)
+        player, death, platforms, enemies, flag, coletaveis, shots, camera, game_manager = gameover(surface, player, enemies, death, platforms, shots, game_manager, flag, camera)
     
     #GAME WON (OK)
     elif game_manager.current_phase == 6:
-        player, enemies, death, platforms, shots, game_manager, flag, camera = gamewon(surface, player, enemies, death, platforms, shots, game_manager, flag, camera)
+        player, death, platforms, enemies, flag, coletaveis, shots, camera, game_manager = gamewon(surface, player, enemies, death, platforms, shots, game_manager, flag, camera)
 
     #SCREEN UPDATE 
     scaled = pygame.transform.scale(surface, (window_width, window_height))
