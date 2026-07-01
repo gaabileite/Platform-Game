@@ -16,7 +16,7 @@ from game_phases.gamerunning import *
 
 pygame.init()
 
-bg_gameover = pygame.transform.smoothscale(pygame.image.load('assets/backgrounds/bg-gameover.png'), (320, 180))
+bg_gameover = pygame.transform.smoothscale(pygame.image.load('assets/backgrounds/bg_gameover.png'), (320, 180))
 btn_tryagain = pygame.transform.smoothscale(pygame.image.load('assets/backgrounds/btn-tentar-novamente.png'), (90, 90))
 
 bg_gameover = pygame.transform.smoothscale(bg_gameover, (320, 180))
@@ -29,6 +29,6 @@ def gameover(surface, player, enemies, death, platforms, shots, game_manager, fl
 
     if pygame.key.get_pressed()[K_SPACE]:
         game_manager.current_phase = 1
-        death, platforms, enemies, flag, shots = create_level(game_manager.current_phase)
+        death, platforms, enemies, flag, shots, camera = create_level(game_manager.current_phase)
 
-    return player, enemies, death, platforms, shots, game_manager, flag
+    return player, enemies, death, platforms, shots, game_manager, flag, camera

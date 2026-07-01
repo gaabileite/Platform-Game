@@ -6,6 +6,7 @@ from classes.flag import Flag
 from constants import *
 from sprites import *
 from spawn import *
+from classes.camera import Camera
 
 REPEAT_DISTANCE = 320
 def pick_collectable_type():
@@ -49,4 +50,4 @@ def create_level(phase):
         3: Flag(level_width - 40, 140, SPRITES['flag fase 3']),
     }
 
-    return death, platforms, enemies, flag, collectables
+    return death, platforms, enemies, flag, collectables, Camera(level_width)

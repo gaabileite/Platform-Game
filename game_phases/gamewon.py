@@ -15,10 +15,10 @@ from game_phases.gamerunning import *
 
 pygame.init()
 
-bg_gamewon = pygame.transform.scale(pygame.image.load('assets/backgrounds/bg-vitoria.png'), (320, 180))
+bg_gamewon = pygame.transform.scale(pygame.image.load('assets/backgrounds/bg_gamewin.png'), (320, 180))
 btn_playagain = pygame.transform.scale(pygame.image.load('assets/backgrounds/btn-tentar-novamente.png'), (87, 23))
 
-def gamewon(surface, player, enemies, death, platforms, shots, game_manager, flag):
+def gamewon(surface, player, enemies, death, platforms, shots, game_manager, flag, camera):
 
     surface.blit(bg_gamewon, (0, 0))
     
@@ -29,6 +29,6 @@ def gamewon(surface, player, enemies, death, platforms, shots, game_manager, fla
 
     if pygame.key.get_pressed()[K_SPACE]:
         game_manager.current_phase = 1
-        death, platforms, enemies, flag, shots = create_level(game_manager.current_phase)
+        death, platforms, enemies, flag, shots, camera = create_level(game_manager.current_phase)
 
-    return player, enemies, death, platforms, shots, game_manager, flag
+    return player, enemies, death, platforms, shots, game_manager, flag, camera

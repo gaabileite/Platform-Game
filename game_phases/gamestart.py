@@ -15,7 +15,7 @@ from game_phases.gamerunning import *
 
 pygame.init()
 
-bg_gamestart = pygame.transform.scale(pygame.image.load('assets/backgrounds/bg-menu.png'), (320, 180))
+bg_gamestart = pygame.transform.scale(pygame.image.load('assets/backgrounds/bg_start.png'), (320, 180))
 btn_play = pygame.transform.scale(pygame.image.load('assets/backgrounds/btn-jogar.png'), (87, 23))
 
 def gamestart(surface, player, enemies, death, platforms, shots, game_manager, flag):
