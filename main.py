@@ -16,6 +16,7 @@ from game_phases.gamerunning import *
 from game_phases.gameover import *
 from game_phases.gamestart import *
 from game_phases.gamewon import *
+from hud import desenhar_hud
 from game_phases.transition import *
 from sprites import *
 

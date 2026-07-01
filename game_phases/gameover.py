@@ -13,6 +13,7 @@ from level import *
 from game_manager import *
 from game_phases.gamerunning import *
 
+
 pygame.init()
 
 bg_gameover = pygame.transform.smoothscale(pygame.image.load('assets/backgrounds/bg-gameover.png'), (320, 180))
