@@ -41,7 +41,7 @@ while True:
 
     #GAME START (OK)
     if game_manager.current_phase == 0:
-        player, enemies, death, platforms, shots, game_manager, flag, shots, camera = gamestart(surface, player, enemies, death, platforms, shots, game_manager, flag, camera)
+        player, enemies, death, platforms, shots, game_manager, flag, camera = gamestart(surface, player, enemies, death, platforms, shots, game_manager, flag, camera)
 
     #GAME RUNNING: PHASE 1, 2, 3 (WIP/BACK)
     elif game_manager.current_phase in [1,2,3]:

@@ -18,7 +18,7 @@ pygame.init()
 bg_gamestart = pygame.transform.scale(pygame.image.load('assets/backgrounds/bg_start.png'), (320, 180))
 btn_play = pygame.transform.scale(pygame.image.load('assets/backgrounds/btn-jogar.png'), (87, 23))
 
-def gamestart(surface, player, enemies, death, platforms, shots, game_manager, flag):
+def gamestart(surface, player, enemies, death, platforms, shots, game_manager, flag, camera):
 
     surface.blit(bg_gamestart, (0, 0))
     
@@ -29,6 +29,6 @@ def gamestart(surface, player, enemies, death, platforms, shots, game_manager, f
 
     if pygame.key.get_pressed()[K_SPACE]:
         game_manager.current_phase = 1
-        death, platforms, enemies, flag, shots = create_level(game_manager.current_phase)
+        death, platforms, enemies, flag, shots, camera = create_level(game_manager.current_phase)
 
-    return player, enemies, death, platforms, shots, game_manager, flag
+    return player, enemies, death, platforms, shots, game_manager, flag, camera

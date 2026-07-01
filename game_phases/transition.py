@@ -20,7 +20,7 @@ bg_transition = {
     1 : pygame.transform.scale(pygame.image.load('assets/backgrounds/bg_transicao1.png'), (320, 180)),
     2 : pygame.transform.scale(pygame.image.load('assets/backgrounds/bg_transicao2.png'), (320, 180))
 }
-btn_keepgoing = pygame.transform.scale(pygame.image.load('assets/buttons/btn-jogar.png'), (87, 23))
+btn_keepgoing = pygame.transform.scale(pygame.image.load('assets/backgrounds/btn-jogar.png'), (87, 23))
 
 def phase_transition(surface, player, enemies, death, platforms, shots, game_manager, flag, last_phase, camera):
     surface.blit(bg_transition[last_phase], (0, 0))
