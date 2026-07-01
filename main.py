@@ -31,7 +31,7 @@ from sprites import *
 #Instanciação do GameManager e criação dos objetos do jogo
 game_manager = GameManager()
 player = Player(player_starter_x, player_starter_y, ANIMATIONS_V)
-death, platforms, enemies, flag, shots, camera = create_level(game_manager.current_phase)
+death, platforms, enemies, flag, coletaveis, shots, camera = create_level(game_manager.current_phase)
 
 while True:
     for event in pygame.event.get():
