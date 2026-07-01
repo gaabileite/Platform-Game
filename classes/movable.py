@@ -2,10 +2,17 @@ from constants import *
 from classes.gameobject import *
     
 class Movable(GameObject):
-    def __init__(self, x, y, color, life, speed, boost, width, height):
-        super().__init__(x, y, color, width, height)
+    def __init__(self, x, y, image, life, speed, boost, width, height, animations):
+        super().__init__(x, y, image, width, height)
+
+        self.state = 'idle'
+        self.frame_index = 0
+        self.anim_counter = 0
+        self.anim_speed = 6
+        self.moving = False
 
         self.speed = speed
+        self.animations = animations
         self.boost = boost
         self.life = life
         self.vy = 0
@@ -47,3 +54,25 @@ class Movable(GameObject):
     def take_damage(self, other):
         if self.check_collision(other):
             self.life -= 1 
+
+    def update_animation(self):
+        if not self.on_ground:
+            new_state = 'jump'
+        elif self.moving:
+            new_state = 'run'
+        else:
+            new_state = 'idle'
+
+        if new_state != self.state:
+            self.state = new_state
+            self.frame_index = 0
+            self.anim_counter = 0
+
+        frames = self.animations[self.state][self.facing]
+
+        self.anim_counter += 1
+        if self.anim_counter >= self.anim_speed:
+            self.anim_counter = 0
+            self.frame_index = (self.frame_index + 1) % len(frames)
+
+        self.image = frames[self.frame_index]
