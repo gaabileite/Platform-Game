@@ -13,3 +13,6 @@ class GameObject:
 
         self.rect = pygame.Rect(x, y, width, height)
         self.image = image
+
+    def get_rect(self):
+        return pygame.Rect(self.x, self.y, self.width, self.height)
