@@ -66,6 +66,19 @@ class Player(Movable):
 
         return Shot(self.x + self.width // 2, self.y + self.height // 2, self.facing)
     
+    def reset(self):
+        self.x = player_starter_x
+        self.y = player_starter_y
+        self.vy = 0
+        self.on_ground = True
+        self.life = player_life
+        self.follower_count = 0
+        self.shot_count = 0
+        self.story_count = 0
+        self.facing = 'right'
+        self.just_shot = False
+        self.damage_cooldown = 0
+
     def take_contact_damage(self):
         if self.damage_cooldown == 0:
             self.life -= 1
