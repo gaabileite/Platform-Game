@@ -22,7 +22,7 @@ btn_tryagain = pygame.transform.smoothscale(pygame.image.load('assets/background
 bg_gameover = pygame.transform.smoothscale(bg_gameover, (320, 180))
 rect_tryagain = btn_tryagain.get_rect(center=(160, 128))
 
-def gameover(surface, player, enemies, death, platforms, shots, game_manager, flag):
+def gameover(surface, player, enemies, death, platforms, shots, game_manager, flag, camera):
 
     surface.blit(bg_gameover, (0, 0))
     surface.blit(btn_tryagain, rect_tryagain)
