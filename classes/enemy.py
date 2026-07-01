@@ -11,7 +11,7 @@ class Enemy(Movable):
     def follow_player(self, player):
         distance = self.get_distance(player)
 
-        if self.type == 'Felca':
+        if self.type == 'FELCA':
             if distance <= 30:
                 if self.x < player.x:
                     self.move('right')

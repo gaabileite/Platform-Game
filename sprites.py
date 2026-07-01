@@ -5,10 +5,10 @@ pygame.init()
 
 #WIP
 SPRITES = {
-    'seguidor' : pygame.image.load("assets/collectables/seguidor.png").convert_alpha(),
-    'base' : pygame.image.load("assets/collectables/base-product.png").convert_alpha(),
-    'perfume' : pygame.image.load("assets/collectables/perfume-product.png").convert_alpha(),
-    'bodysplash' : pygame.image.load("assets/collectables/body-splash-product.png").convert_alpha(),
+    'SEGUIDOR' : pygame.image.load("assets/collectables/seguidor.png").convert_alpha(),
+    'BASE' : pygame.image.load("assets/collectables/base-product.png").convert_alpha(),
+    'PERFUME' : pygame.image.load("assets/collectables/perfume-product.png").convert_alpha(),
+    'BODY SPLASH' : pygame.image.load("assets/collectables/body-splash-product.png").convert_alpha(),
     'flag fase 1' : pygame.image.load("assets/flag1.png").convert_alpha(),
     'flag fase 2' : pygame.image.load("assets/flag2.png").convert_alpha(),
     'flag fase 3' : pygame.image.load("assets/flag3.png").convert_alpha(),

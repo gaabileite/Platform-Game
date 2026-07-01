@@ -19,7 +19,7 @@ bg_gamestart = pygame.transform.scale(pygame.image.load('assets/backgrounds/bg_s
 btn_play = pygame.transform.scale(pygame.image.load('assets/backgrounds/btn-jogar.png'), (87, 23))
 
 def gamestart(surface, player, enemies, death, platforms, shots, game_manager, flag, camera):
-
+    coletaveis = []
     surface.blit(bg_gamestart, (0, 0))
     
     escala = 1.0 + math.sin(pygame.time.get_ticks() * 0.005) * 0.08

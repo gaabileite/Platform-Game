@@ -45,7 +45,7 @@ while True:
 
     #GAME RUNNING: PHASE 1, 2, 3 (WIP/BACK)
     elif game_manager.current_phase in [1,2,3]:
-        game_manager, last_phase = game_running(player, enemies, death, platforms, shots, camera, surface, game_manager, flag)
+        game_manager, last_phase = game_running(player, enemies, death, platforms, shots, camera, surface, game_manager, flag[game_manager.current_phase], coletaveis)
 
     #PHASE TRANSITION (WIP/FRONT)
     elif game_manager.current_phase == 4:

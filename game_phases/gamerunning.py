@@ -18,7 +18,7 @@ backgrounds = {
     3 : pygame.transform.smoothscale(pygame.image.load('assets/backgrounds/bg-phase3.png'), (320, 180))
 }
 
-def game_running(player, enemies, death, platforms, shots, camera, surface, game_manager, flag):
+def game_running(player, enemies, death, platforms, shots, camera, surface, game_manager, flag, coletaveis):
     last_phase = game_manager.current_phase
 
     player.handle_movement()
@@ -49,6 +49,8 @@ def game_running(player, enemies, death, platforms, shots, camera, surface, game
     surface.blit(flag.image, camera.apply(flag))
     for shot in shots:
         surface.blit(shot.image, camera.apply(shot))
+    for coletavel in coletaveis:
+        surface.blit(coletavel.image, camera.apply(coletavel))
 
     # --- colisões com inimigos (jogador toma dano + tiros acertam) ---
     enemy_dead = []
@@ -60,7 +62,6 @@ def game_running(player, enemies, death, platforms, shots, camera, surface, game
         for shot in shots:
             if shot.check_collision(enemy):
                 enemy.life -= 1
-                enemy.image = SPRITES['felca_dano']
                 shots_used.append(shot)
 
         if enemy.life <= 0:
@@ -69,6 +70,10 @@ def game_running(player, enemies, death, platforms, shots, camera, surface, game
     if player.life <= 0:
         game_manager.current_phase = 5
         return game_manager, last_phase
+    
+    for coletavel in coletaveis[:]:
+        if player.check_collision(coletavel):
+            player.add_collectable(coletavel)
 
     # --- remover inimigos mortos e tiros já usados ---
     for enemy in enemy_dead:

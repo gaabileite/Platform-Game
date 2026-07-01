@@ -32,7 +32,7 @@ class Player(Movable):
             self.move('jump')
 
     def add_collectable(self, collectable):
-        if self.check_collision(collectable) and collectable.type == 'story':
+        if self.check_collision(collectable) and collectable.type == 'STORY':
             self.story_count += 1
 
             if self.story_count == 5:
@@ -42,16 +42,16 @@ class Player(Movable):
                 else:
                     self.follower_count += 50
 
-        elif self.check_collision(collectable) and collectable.type == 'seguidor':
+        elif self.check_collision(collectable) and collectable.type == 'SEGUIDOR':
             self.follower_count += 10
 
-        elif self.check_collision(collectable) and collectable.type == 'base':
+        elif self.check_collision(collectable) and collectable.type == 'BASE':
             self.shot_count -= 1
 
-        elif self.check_collision(collectable) and collectable.type == 'bodysplash':
+        elif self.check_collision(collectable) and collectable.type == 'BODY SPLASH':
             self.shot_count += 1
 
-        elif self.check_collision(collectable) and collectable.type == 'perfume':
+        elif self.check_collision(collectable) and collectable.type == 'PERFUME':
             self.shot_count += 3
 
     def shoot(self):
@@ -62,9 +62,9 @@ class Player(Movable):
         self.shot_count -= 1
 
         if pygame.key.get_pressed()[K_w]:
-            return Shot(self.x + self.width // 2, self.y + self.height // 2, 'up')
+            return Shot(self.x + self.width // 2, self.y + self.height // 2, 'up', ANIMATIONS_T[0][0], ANIMATIONS_T)
 
-        return Shot(self.x + self.width // 2, self.y + self.height // 2, self.facing)
+        return Shot(self.x + self.width // 2, self.y + self.height // 2, self.facing, ANIMATIONS_T[0][0], ANIMATIONS_T)
     
     def take_contact_damage(self):
         if self.damage_cooldown == 0:
