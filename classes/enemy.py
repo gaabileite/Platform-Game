@@ -12,9 +12,11 @@ class Enemy(Movable):
 
     def follow_player(self, player):
         distance = self.get_distance(player)
+        self.moving = False
 
         if self.type == 'FELCA':
             if distance <= persuit_range:
+                self.moving = True
                 if self.x < player.x:
                     self.move('right')
                     self.facing = 'right'
@@ -37,6 +39,7 @@ class Enemy(Movable):
 
         else:
             if distance <= persuit_range:
+                self.moving = True
                 if self.x < player.x:
                     self.move('right')
                     self.facing = 'right'

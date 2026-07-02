@@ -25,6 +25,7 @@ def game_running(player, enemies, death, platforms, shots, camera, surface, game
 
     player.handle_movement()
     shot = player.shoot()
+    print("shot:", shot, "| shot_count:", player.shot_count, "| just_shot:", player.just_shot)
     if shot:
         shots.append(shot)
     camera.follow(player)

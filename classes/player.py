@@ -61,10 +61,13 @@ class Player(Movable):
             self.shot_count += 3
 
     def shoot(self):
-        if (pygame.key.get_pressed()[K_e] and self.just_shot) or self.shot_count <= 0 or not pygame.key.get_pressed()[K_e]:
+        e_pressed = pygame.key.get_pressed()[K_e]
+
+        if not e_pressed or self.just_shot or self.shot_count <= 0:
+            self.just_shot = e_pressed
             return None
-        
-        self.just_shot = pygame.key.get_pressed()[K_e]
+
+        self.just_shot = e_pressed
         self.shot_count -= 1
         tocar('shot')
         self.shoot_timer = 12
@@ -107,6 +110,8 @@ class Player(Movable):
     def update(self, platforms):
         if self.damage_cooldown > 0:
             self.damage_cooldown -= 1
+        if self.shoot_timer > 0:
+            self.shoot_timer -= 1
         self.apply_gravity()
         self.check_platform_collision(platforms)
         self.update_animation()

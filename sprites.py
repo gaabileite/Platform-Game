@@ -24,8 +24,8 @@ ANIMATIONS_V = {
         'left':  load_frames(["assets/virginia/idle/virginia L.png"], (66, 102)),
     },
     'run': {
-        'right': load_frames(["assets/virginia/virginia_run/run_direita#3.png"], (66, 102)),
-        'left':  load_frames(["assets/virginia/virginia_run/run_esquerda#3.png"], (66, 102)),
+        'right': load_frames(["assets/virginia/run/run_direita#3.png"], (66, 102)),
+        'left':  load_frames(["assets/virginia/run/run_esquerda#3.png"], (66, 102)),
     },
     'jump': {
         'right': load_frames(["assets/virginia/jump/jumpR-frame3.png"], (66, 102)),
@@ -39,19 +39,19 @@ ANIMATIONS_V = {
 
 ANIMATIONS_F = {
     'idle': {
-        'right': load_frames([f"assets/front_inimigos/felca/cara do felca.png"], (60, 90)),
-        'left': load_frames([f"assets/front_inimigos/felca/cara do felca.png"], (60, 90))
+        'right': load_frames([f"assets/inimigos/felca/cara do felca.png"], (60, 90)),
+        'left': load_frames([f"assets/inimigos/felca/cara do felca.png"], (60, 90))
     }
 }
 
 ANIMATIONS_A = {
     'idle': {
-        'right': load_frames([f"assets/front_inimigos/ana castela/acastela_idle/acastela_idleR#1.png"], (60, 90)),
-        'left': load_frames([f"assets/front_inimigos/ana castela/acastela_idle/acastela_idleL#1.png"], (60, 90))
+        'right': load_frames([f"assets/inimigos/ana castela/acastela_idle/acastela_idleR#1.png"], (60, 90)),
+        'left': load_frames([f"assets/inimigos/ana castela/acastela_idle/acastela_idleL#1.png"], (60, 90))
     },
     'chase': {
-        'right': load_frames([f"assets/front_inimigos/ana castela/acastela_chase/acastela_chase_direita#1.png"], (60, 90)),
-        'left': load_frames([f"assets/front_inimigos/ana castela/acastela_chase/acastela_chase_esquerda#1.png"], (60, 90))
+        'right': load_frames([f"assets/inimigos/ana castela/acastela_chase/acastela_chase_direita#1.png"], (60, 90)),
+        'left': load_frames([f"assets/inimigos/ana castela/acastela_chase/acastela_chase_esquerda#1.png"], (60, 90))
     }
 }
 
