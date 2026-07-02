@@ -37,22 +37,34 @@ A estrutura do projeto separa claramente os recursos visuais da lógica do jogo:
 
 ```text
 📂 Projeto
-├──resources
-|  ├──fonts
-|  ├──spritesheets
-|  |  ├──player
-|  |  ├──enemy
-|  |  └──collectables
-|  ├──background
-|  └──menu
+├──assets
+|  ├──backgrounds
+|  ├──virginia
+|  |  ├──run
+|  |  ├──idle
+|  |  ├──shooting
+|  |  └──jump
+|  ├──tiro
+|  ├──plataformas
+|  ├──inimigos
+|  ├──collectables
+|  └──sounds
 ├──classes
 |  ├──gameobject.py
 |  ├──movable.py
 |  ├──player.py
 |  ├──enemy.py
 |  ├──shot.py
+|  ├──camera.py
+|  ├──flag.py
+|  ├──platform.py
 |  └──collectable.py
 ├──constants.py
+├──level.py
+├──sounds.py
+├──sprites.py
+├──spawn.py
+├──hud.py
 └──main.py
 ```
 
