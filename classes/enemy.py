@@ -7,12 +7,14 @@ class Enemy(Movable):
         super().__init__(x, y, image, enemy_life, enemy_speed, enemy_boost, 60, 90, animations)
         self.type = type
         self.steal_timer = 0
+        self.flying = (type == 'FELCA')
+        self.facing = 'right'
 
     def follow_player(self, player):
         distance = self.get_distance(player)
 
         if self.type == 'FELCA':
-            if distance <= 30:
+            if distance <= persuit_range:
                 if self.x < player.x:
                     self.move('right')
                     self.facing = 'right'
@@ -20,9 +22,14 @@ class Enemy(Movable):
                     self.move('left')
                     self.facing = 'left'
 
+                if self.y < player.y:
+                    self.move('down')
+                elif self.y > player.y:
+                    self.move('up')
+
                 self.steal_timer += 1
                 if self.steal_timer >= 60:
-                    steal = random.randint(3000, 5000)
+                    steal = random.randint(3, 5)
                     player.follower_count = max(0, player.follower_count - steal)
                     self.steal_timer = 0
             else:
@@ -43,7 +50,17 @@ class Enemy(Movable):
     def get_distance(self, player):
         return abs(self.x - player.x)
     
+    def update_animation(self):
+        new_state = 'chase' if self.moving else 'idle'
+        if new_state not in self.animations:
+            new_state = 'idle'
+        self.state = new_state
+
+        self.image = self.animations[self.state][self.facing][0]
+    
     def update(self, platforms, player):
         self.follow_player(player)
-        self.apply_gravity()
+        if not self.flying:
+            self.apply_gravity()
         self.check_platform_collision(platforms)
+        self.update_animation()

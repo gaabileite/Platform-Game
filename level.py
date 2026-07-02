@@ -29,7 +29,6 @@ def create_level(phase):
     enemy_pattern = ENEMY_PATTERNS[phase]
     collectable_pattern = COLLECTABLE_PATTERNS[phase]
 
-    #Criação de loop de acordo com o LOOPS_PER_ROUND da fase, preenchendo plataformas, inimigos e coletáveis
     for i in range(repeat_count):
         for (x, y, tamanho) in platform_pattern:
             w, h = PLATFORM_TYPES[tamanho]
@@ -43,11 +42,10 @@ def create_level(phase):
             tipo = pick_collectable_type()
             collectables.append(Collectable(x + i * REPEAT_DISTANCE, y, SPRITES.get(tipo, SPRITES['SEGUIDOR']), tipo))
 
-    #Criação da bandeira no final do nível
     flag = {
-        1: Flag(level_width - 120, 420, SPRITES['flag fase 1']),
-        2: Flag(level_width - 120, 420, SPRITES['flag fase 2']),
-        3: Flag(level_width - 120, 420, SPRITES['flag fase 3']),
+        1: Flag(level_width - 120, 360, SPRITES['flag']),
+        2: Flag(level_width - 120, 360, SPRITES['flag']),
+        3: Flag(level_width - 120, 360, SPRITES['flag']),
     }
 
     return death, platforms, enemies, flag, collectables, [], Camera(level_width)

@@ -15,9 +15,9 @@ def _carregar_icones():
     if _icones_carregados:
         return
     TAM = (8, 8)
-    icone_seg   = pygame.transform.scale(pygame.image.load('icone_seguidores.png'), TAM)
-    icone_tiros = pygame.transform.scale(pygame.image.load('icone_perfume.png'),    TAM)
-    icone_vidas = pygame.transform.scale(pygame.image.load('icone_vida.png'),       TAM)
+    icone_seg   = pygame.transform.scale(pygame.image.load('assets/collectables/seguidor.png'), TAM)
+    icone_tiros = pygame.transform.scale(pygame.image.load('assets/collectables/perfume-product.png'),    TAM)
+    icone_vidas = pygame.transform.scale(pygame.image.load('assets/collectables/story.png'),       TAM)
     _icones_carregados = True
 
 def desenhar_hud(surface, player):
@@ -64,3 +64,20 @@ def desenhar_hud(surface, player):
     prog = min(seguidores / meta, 1.0) if meta > 0 else 0
     pygame.draw.rect(surface, (50, 50, 50),   (barra_x, barra_y, barra_w, 4))
     pygame.draw.rect(surface, (255, 20, 147), (barra_x, barra_y, int(barra_w * prog), 4))
+
+def desenhar_vida_extra(surface, player, camera):
+    if player.life_up_timer <= 0:
+        return
+
+    progresso = (60 - player.life_up_timer) / 60
+    offset = int(progresso * 45)
+    alpha  = int(255 * (player.life_up_timer / 60))
+
+    x_tela, y_tela, largura, altura = camera.apply(player)
+    cx = x_tela + largura // 2
+    cy = y_tela - offset
+
+    texto = font_hud.render("+1 VIDA", True, (255, 40, 90))
+    texto.set_alpha(alpha)
+    rect = texto.get_rect(center=(cx, cy))
+    surface.blit(texto, rect)

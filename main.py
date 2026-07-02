@@ -3,8 +3,11 @@ from pygame.locals import *
 from sys import exit
 from constants import *
 
-#Definições iniciais padrão do Pygame e criação da janela
 pygame.init()
+pygame.mixer.init()
+pygame.mixer.music.load('assets/sounds/bg_sound.mp3')
+pygame.mixer.music.set_volume(0.4)
+pygame.mixer.music.play(-1)
 screen = pygame.display.set_mode((window_width, window_height))
 surface = pygame.Surface((internal_width, internal_height))
 pygame.display.set_caption("WEGLOW: A Ascensão de Virgínia")
@@ -28,7 +31,6 @@ from hud import desenhar_hud
 from game_phases.transition import *
 from sprites import *
 
-#Instanciação do GameManager e criação dos objetos do jogo
 game_manager = GameManager()
 player = Player(player_starter_x, player_starter_y, ANIMATIONS_V)
 death, platforms, enemies, flag, coletaveis, shots, camera = create_level(game_manager.current_phase)
@@ -39,27 +41,21 @@ while True:
             pygame.quit()
             exit()
 
-    #GAME START (OK)
     if game_manager.current_phase == 0:
         player, death, platforms, enemies, flag, coletaveis, shots, camera, game_manager = gamestart(surface, player, enemies, death, platforms, shots, game_manager, flag, camera)
 
-    #GAME RUNNING: PHASE 1, 2, 3 (WIP/BACK)
     elif game_manager.current_phase in [1,2,3]:
         game_manager, last_phase = game_running(player, enemies, death, platforms, shots, camera, surface, game_manager, flag[game_manager.current_phase], coletaveis)
 
-    #PHASE TRANSITION (WIP/FRONT)
     elif game_manager.current_phase == 4:
         player, death, platforms, enemies, flag, coletaveis, shots, camera, game_manager = phase_transition(surface, player, enemies, death, platforms, shots, game_manager, flag, last_phase, camera)
 
-    #GAME OVER (OK)
     elif game_manager.current_phase == 5:
         player, death, platforms, enemies, flag, coletaveis, shots, camera, game_manager = gameover(surface, player, enemies, death, platforms, shots, game_manager, flag, camera)
     
-    #GAME WON (OK)
     elif game_manager.current_phase == 6:
         player, death, platforms, enemies, flag, coletaveis, shots, camera, game_manager = gamewon(surface, player, enemies, death, platforms, shots, game_manager, flag, camera)
 
-    #SCREEN UPDATE 
     screen.blit(surface, (0, 0))
     clock.tick(40)
 

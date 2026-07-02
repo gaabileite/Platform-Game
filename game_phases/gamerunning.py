@@ -12,6 +12,8 @@ from constants import *
 from level import *
 from game_phases.gamerunning import *
 
+font_hud = pygame.font.SysFont("couriernew", 22, bold=True)
+
 backgrounds = {
     1 : pygame.transform.smoothscale(pygame.image.load('assets/backgrounds/bg-phase1.png'), (960, 540)),
     2 : pygame.transform.smoothscale(pygame.image.load('assets/backgrounds/bg-phase2.png'), (960, 540)),
@@ -95,5 +97,17 @@ def game_running(player, enemies, death, platforms, shots, camera, surface, game
     if player.check_collision(death) or player.y > internal_height:
         game_manager.current_phase = 5
         return game_manager, last_phase
+    
+    linhas = [
+        f"Vidas: {player.life}",
+        f"Tiros: {player.shot_count}",
+        f"Seguidores: {player.follower_count}",
+    ]
+    for i, linha in enumerate(linhas):
+        y = 12 + i * 24
+        sombra = font_hud.render(linha, True, (0, 0, 0))
+        texto  = font_hud.render(linha, True, (255, 255, 255))
+        surface.blit(sombra, (13, y + 1))   # sombrinha 1px pra legibilidade
+        surface.blit(texto,  (12, y))
 
     return game_manager, last_phase

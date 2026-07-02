@@ -57,22 +57,10 @@ class Movable(GameObject):
 
     def update_animation(self):
         if not self.on_ground:
-            new_state = 'jump'
+            self.state = 'jump'
         elif self.moving:
-            new_state = 'run'
+            self.state = 'run'
         else:
-            new_state = 'idle'
+            self.state = 'idle'
 
-        if new_state != self.state:
-            self.state = new_state
-            self.frame_index = 0
-            self.anim_counter = 0
-
-        frames = self.animations[self.state][self.facing]
-
-        self.anim_counter += 1
-        if self.anim_counter >= self.anim_speed:
-            self.anim_counter = 0
-            self.frame_index = (self.frame_index + 1) % len(frames)
-
-        self.image = frames[self.frame_index]
+        self.image = self.animations[self.state][self.facing][0]

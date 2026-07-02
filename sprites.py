@@ -10,9 +10,7 @@ SPRITES = {
     'PERFUME' : pygame.image.load("assets/collectables/perfume-product.png").convert_alpha(),
     'BODY SPLASH' : pygame.image.load("assets/collectables/body-splash-product.png").convert_alpha(),
     'STORY' : pygame.image.load("assets/collectables/story.png").convert_alpha(),
-    'flag fase 1' : pygame.image.load("assets/flag1.png").convert_alpha(),
-    'flag fase 2' : pygame.image.load("assets/flag2.png").convert_alpha(),
-    'flag fase 3' : pygame.image.load("assets/flag3.png").convert_alpha(),
+    'flag' : pygame.image.load("assets/flag.png").convert_alpha(),
     'plataforma' : pygame.image.load("assets/plataformas/plataforma.png").convert_alpha(),
     'chao' : pygame.image.load("assets/plataformas/chao.png").convert_alpha(),
 }
