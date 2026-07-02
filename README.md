@@ -87,7 +87,7 @@ A estrutura do projeto separa claramente os recursos visuais da lógica do jogo:
 
 * **Gabriel Geller — Back-End 2: Inimigos & Coletáveis** — IA do Felca (raio de visão, perseguição, roubo de seguidores e vida) e do Hater (perseguição direta); sistema de *spawn* com frequências (50%/30%/20%); efeitos dos coletáveis ao serem pegos e contador por fase.
 
-* **Leonardo Kitner — Back-End 3: Fases, Tigrinho & Game Manager** — *Game loop* e controle de estados; gerenciador de fases (contadores de 25/35/60 coletáveis e transições); lógica do Jogo do Tigrinho (apostas variáveis por fase e resultado aleatório); condições de vitória (1M de seguidores) e derrota; *score* global.
+* **Leonardo Kitner — Back-End 3: Fases, Tigrinho & Game Manager** — *Game loop* e controle de estados; gerenciador de fases (contadores de 25/35/60 coletáveis e transições); condições de vitória (1M de seguidores) e derrota; *score* global.
 
 ---
 
