@@ -11,7 +11,7 @@ class Player(Movable):
         super().__init__(x, y, animations['idle']['right'][0], player_life, player_speed, player_boost, 66, 102, animations)
 
         self.follower_count = 0
-        self.shot_count = 0
+        self.shot_count = 2
         self.story_count = 0
         self.facing = 'right'
         self.just_shot = False
@@ -39,7 +39,7 @@ class Player(Movable):
         if self.check_collision(collectable) and collectable.type == 'STORY':
             self.story_count += 1
 
-            if self.story_count == 5:
+            if self.story_count == 3:
                 if self.life < 5:
                     self.life += 1
                     self.story_count = 0
