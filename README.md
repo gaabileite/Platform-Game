@@ -87,7 +87,7 @@ A estrutura do projeto separa claramente os recursos visuais da lógica do jogo:
 
 * **Gabriel Geller — Back-End 2: Inimigos & Coletáveis** — IA do Felca (raio de visão, perseguição, roubo de seguidores e vida) e do Hater (perseguição direta); sistema de *spawn* com frequências (50%/30%/20%); efeitos dos coletáveis ao serem pegos e contador por fase.
 
-* **Leonardo Kitner — Back-End 3: Fases, Tigrinho & Game Manager** — *Game loop* e controle de estados; gerenciador de fases (contadores de 25/35/60 coletáveis e transições); lógica do Jogo do Tigrinho (apostas variáveis por fase e resultado aleatório); condições de vitória (1M de seguidores) e derrota; *score* global.
+* **Leonardo Kitner — Back-End 3: Fases, Tigrinho & Game Manager** — *Game loop* e controle de estados; gerenciador de fases (contadores de 25/35/60 coletáveis e transições); condições de vitória (1M de seguidores) e derrota; *score* global.
 
 ---
 
@@ -105,16 +105,14 @@ A estrutura do projeto separa claramente os recursos visuais da lógica do jogo:
 
 ## 💡 Desafios, Erros e Lições Aprendidas
 
-*a preencher*
-
 ### Qual foi o maior erro cometido durante o projeto? Como vocês lidaram com ele?
 
-*a preencher*
+O maior erro foi a falta de integração e comunicação entre os integrantes da equipe. Por estarmos todos passando por um período de adaptação ao primeiro período da faculdade e conciliando diferentes responsabilidades, em alguns momentos a comunicação acabou falhando, o que dificultou o alinhamento das tarefas e o acompanhamento do andamento do projeto. Para resolver essa situação, passamos a utilizar o Discord de forma mais organizada, realizamos reuniões com maior frequência e mantivemos um contato mais constante entre os membros da equipe. Além disso, buscamos apoio dos monitores, mantendo-os informados sobre o progresso do jogo e tirando dúvidas sempre que necessário, o que contribuiu para colocar o projeto novamente no caminho certo.
 
 ### Qual foi o maior desafio enfrentado durante o projeto? Como vocês lidaram com ele?
 
-*a preencher*
+O maior desafio, sem dúvidas, foi evitar o acúmulo de tarefas e manter um ritmo constante de desenvolvimento. Nossa equipe tinha uma proposta bastante criativa, que recebeu muitos elogios da monitoria, o que aumentou ainda mais as expectativas em relação ao resultado final. No entanto, percebemos que boas ideias, por si só, não garantem um bom projeto. Foi necessário que cada integrante assumisse suas responsabilidades e entregasse suas atividades de forma gradual, evitando deixar tudo para os últimos dias. Com mais organização e divisão das tarefas, conseguimos avançar no desenvolvimento sem comprometer a qualidade do jogo.
 
 ### Quais as lições aprendidas durante o projeto?
 
-*a preencher*
+A principal lição aprendida foi que a colaboração é indispensável em projetos de tecnologia. Um trabalho da dimensão deste projeto só se torna possível quando todos os integrantes contribuem de forma equilibrada e mantêm uma comunicação clara e constante. Além dos conhecimentos técnicos adquiridos, aprendemos a importância do planejamento, da organização e do comprometimento individual para que o trabalho em equipe funcione. Essa experiência mostrou que o sucesso de um projeto depende tanto da qualidade da ideia quanto da capacidade do grupo de trabalhar em conjunto para transformá-la em realidade. 
